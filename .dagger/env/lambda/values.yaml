@@ -1,0 +1,23 @@
+plan:
+    package: .
+name: lambda
+sops:
+    kms: []
+    gcp_kms: []
+    azure_kv: []
+    hc_vault: []
+    age:
+        - recipient: age1gxwmtwahzwdmrskhf90ppwlnze30lgpm056kuesrxzeuyclrwvpsupwtpk
+          enc: |
+            -----BEGIN AGE ENCRYPTED FILE-----
+            YWdlLWVuY3J5cHRpb24ub3JnL3YxCi0+IFgyNTUxOSBIT1AxbWRnbWtFREN1eUZr
+            ZW5aK29DV2Q5TEN3M0MvTXFOcHJ2K0M3TkZzCm9FS0czV1NUUmxaVHkyYkprajB0
+            M2tLb3RWckZ3bno4K0NUdGZpSit1eFEKLS0tIG5ZdTh1aHpNS2JGUzFSOS9ob0xy
+            TW9rbDVseHE4QmQ2dEg4UXpWaXFRRlUKFPqCLn+aN/gCHhq/bt/7SEEKRhdiDr7h
+            zJRXvG1hPPCJZ/dPSlsPvBYGt9ESz2Xjbb+rmNTPNoduq5NqRMMR2Q==
+            -----END AGE ENCRYPTED FILE-----
+    lastmodified: "2021-07-16T15:56:51Z"
+    mac: ENC[AES256_GCM,data:vpUlRV7P2L5KiQF8clKuTj5Q3RkilDacflxeTCT4KSv3UEG4A9zgDUXIPbJdqn4jh6SAhz1u7G4CqLZyCzgbXs632F8guHxjSsMKWLfIC3ScSGUQjz6CgRintLP3JdjJdlzIr3rwNFJWsnpmpA99j8/xIxpu002LgRtLMnCqur8=,iv:Fj0CUTvfPt8bkTjEkrieXpUs8tkYaZNxpY5Ip+M9tM0=,tag:E3EqHs65VhpElKYNHZXXCQ==,type:str]
+    pgp: []
+    encrypted_suffix: secret
+    version: 3.7.1
