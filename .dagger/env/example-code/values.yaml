@@ -1,0 +1,30 @@
+plan:
+    package: ./examples/code
+name: example-code
+inputs:
+    TestCodeDirectory:
+        dir:
+            path: ./deploy/src
+    TestImageDirectory:
+        dir:
+            path: ./deploy/image_deploy
+sops:
+    kms: []
+    gcp_kms: []
+    azure_kv: []
+    hc_vault: []
+    age:
+        - recipient: age1gxwmtwahzwdmrskhf90ppwlnze30lgpm056kuesrxzeuyclrwvpsupwtpk
+          enc: |
+            -----BEGIN AGE ENCRYPTED FILE-----
+            YWdlLWVuY3J5cHRpb24ub3JnL3YxCi0+IFgyNTUxOSBoTlE1QWovSWJUL3BnTHk0
+            UkNjcGp3RDhHdEc2QktFUFFDMTU2M0ljY2lnCnhFSlRkM0hoVFJyank4M0c2OHhh
+            aEZIaHFMTUlTa0ZHWW9GM2p4dlN3MjQKLS0tIGN2bVV0RU9yQnBOS05OSGlhc2hn
+            ZVQxN0xZdGhoNkhOdW42QjBNckNhYzQKRhi/kpx/TTfVLwvY4XxakL08SvccouUo
+            9jjQIGFizwMAaCmd8NPsHfS0GXrXCvMQwEbHQHFnRHPZ7tKrzgw48w==
+            -----END AGE ENCRYPTED FILE-----
+    lastmodified: "2021-07-19T16:26:20Z"
+    mac: ENC[AES256_GCM,data:gBw/umZGzvF9qyOmjb2dEH/ezlHnFzUXAv5GhLVcAnJPfwagjWqDLhUJUkX8kRtvBRP8IEOuvtlZKJFTfRYXiUV8CnWQYQLbJC4PP11cHyewMal9cE/0RNX+RedsyS4dOhzAquI380t928mPMNfZjMpkUXmn15zj6WQN6omQzI0=,iv:vR0b4rFB7n1pN2ZTUgcz/ZuaHnJv28Tme5f1G8Ub4T4=,tag:Grg/85rP2C8/H/jUt4h86g==,type:str]
+    pgp: []
+    encrypted_suffix: secret
+    version: 3.7.1
