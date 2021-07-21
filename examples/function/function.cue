@@ -24,7 +24,7 @@ TestFunctionZip: serverless.#Function & {
 	code:    TestCode
 	runtime: "go1.x"
 	handler: "index.handler"
-	events: {
+	"events": {
 		"Api": events.#Api & {
 			path: "/get"
 		}
