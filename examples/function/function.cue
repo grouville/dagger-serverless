@@ -1,6 +1,8 @@
 package example
 
 import (
+	"encoding/json"
+
 	"alpha.dagger.io/dagger"
 	"alpha.dagger.io/aws"
 
@@ -15,8 +17,23 @@ TestConfig: aws.#Config & {
 TestCodeDirectory: dagger.#Input & {dagger.#Artifact}
 
 TestCode: serverless.#Code & {
+	name:   "go-cool-func"
 	config: TestConfig
 	source: TestCodeDirectory
+}
+
+TestCode2: serverless.#Code & {
+	name:   "go-cool-func-two"
+	config: TestConfig
+	source: TestCodeDirectory
+}
+
+api: events.#Api & {
+	path: "/get"
+}
+
+queue: events.#SQS & {
+	queue: "fake::arn"
 }
 
 TestFunctionZip: serverless.#Function & {
@@ -25,11 +42,31 @@ TestFunctionZip: serverless.#Function & {
 	runtime: "go1.x"
 	handler: "index.handler"
 	"events": {
-		"Api": events.#Api & {
-			path: "/get"
-		}
-		"Queue": events.#SQS & {
-			queue: "test::arn"
+		"api":   api
+		"queue": queue
+		"cat":   events.#Api & {
+			path: "/cat"
 		}
 	}
 }
+
+TestFunctionZip2: serverless.#Function & {
+	name:    "my-cool-func2"
+	code:    TestCode2
+	runtime: "go1.x"
+	handler: "index.handler"
+	"events": {
+		"api": events.#Api & {
+			"path": "/foo"
+		}
+		"queue": events.#SQS & {
+			queue: "fake::arn"
+		}
+		"tata": events.#Api & {
+			path: "/bar"
+		}
+	}
+}
+
+output: dagger.#Output & {json.Marshal(TestFunctionZip.#manifest)}
+output2: dagger.#Output & {json.Marshal(TestFunctionZip2.#manifest)}
