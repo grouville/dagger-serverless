@@ -13,7 +13,7 @@ import (
 // Upload code to s3 or ECR
 #Code: {
 	// AWS credentials
-	config: dagger.#Input & {aws.#Config}
+	config: aws.#Config
 
 	// Source code name
 	name: dagger.#Input & {=~"^[a-zA-Z-]+$"}

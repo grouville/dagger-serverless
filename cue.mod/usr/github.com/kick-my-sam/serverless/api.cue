@@ -44,10 +44,10 @@ import (
 	type: dagger.#Input & {string}
 
 	// Required field
-	required: dagger.#Input & {[...string]}
+	required: [...string]
 
 	// Model properties
-	properties: dagger.#Input & {[string]: type: string}
+	properties: [string]: type: string
 }
 
 // Build AWS::Serverless::API
@@ -71,10 +71,10 @@ import (
 	definitionUri: dagger.#Input & {*null | string}
 
 	// API resources tags
-	tags: dagger.#Input & {[string]: string}
+	tags: [string]: string
 
 	// The schemas to be used by your API methods.
-	models: dagger.#Input & {[string]: #Model}
+	models: [string]: #Model
 
 	#manifest: {
 		Type: "AWS::Serverless::Api"
