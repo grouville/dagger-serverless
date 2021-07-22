@@ -14,16 +14,18 @@ TestConfig: aws.#Config & {
 TestCodeDirectory: dagger.#Input & {dagger.#Artifact}
 
 TestCodeZip: serverless.#Code & {
-	config: TestConfig
-	name:   "go-cool-func"
-	source: TestCodeDirectory
+	config:  TestConfig
+	name:    "go-cool-func"
+	source:  TestCodeDirectory
+	handler: "index.handler"
 }
 
 TestImageDirectory: dagger.#Input & {dagger.#Artifact}
 
 TestCodeImage: serverless.#Code & {
-	config: TestConfig
-	name:   "go-cool-image"
-	source: TestImageDirectory
-	type:   "Image"
+	config:  TestConfig
+	name:    "go-cool-image"
+	source:  TestImageDirectory
+	type:    "Image"
+	handler: "index.handler"
 }

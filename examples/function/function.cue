@@ -17,15 +17,17 @@ TestConfig: aws.#Config & {
 TestCodeDirectory: dagger.#Input & {dagger.#Artifact}
 
 TestCode: serverless.#Code & {
-	name:   "go-cool-func"
-	config: TestConfig
-	source: TestCodeDirectory
+	name:    "go-cool-func"
+	config:  TestConfig
+	source:  TestCodeDirectory
+	handler: "index.handler"
 }
 
 TestCode2: serverless.#Code & {
-	name:   "go-cool-func-two"
-	config: TestConfig
-	source: TestCodeDirectory
+	name:    "go-cool-func-two"
+	config:  TestConfig
+	source:  TestCodeDirectory
+	handler: "index.handler"
 }
 
 api: events.#Api & {
@@ -40,7 +42,6 @@ TestFunctionZip: serverless.#Function & {
 	name:    "my-cool-func"
 	code:    TestCode
 	runtime: "go1.x"
-	handler: "index.handler"
 	"events": {
 		"api":   api
 		"queue": queue
@@ -54,7 +55,6 @@ TestFunctionZip2: serverless.#Function & {
 	name:    "my-cool-func2"
 	code:    TestCode2
 	runtime: "go1.x"
-	handler: "index.handler"
 	"events": {
 		"api": events.#Api & {
 			"path": "/foo"
@@ -68,5 +68,5 @@ TestFunctionZip2: serverless.#Function & {
 	}
 }
 
-output: dagger.#Output & {json.Marshal(TestFunctionZip.#manifest)}
+output:  dagger.#Output & {json.Marshal(TestFunctionZip.#manifest)}
 output2: dagger.#Output & {json.Marshal(TestFunctionZip2.#manifest)}
