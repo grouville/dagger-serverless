@@ -39,6 +39,17 @@ import (
 	}
 }
 
+#Model: {
+	// Model data types
+	type: dagger.#Input & {string}
+
+	// Required field
+	required: dagger.#Input & {[...string]}
+
+	// Model properties
+	properties: dagger.#Input & {[string]: type: string}
+}
+
 // Build AWS::Serverless::API
 #Api: {
 	// A name for the API Gateway RestApi resource
@@ -63,7 +74,7 @@ import (
 	tags: dagger.#Input & {[string]: string}
 
 	// The schemas to be used by your API methods.
-	models: dagger.#Input & {[string]: _}
+	models: dagger.#Input & {[string]: #Model}
 
 	#manifest: {
 		Type: "AWS::Serverless::API"

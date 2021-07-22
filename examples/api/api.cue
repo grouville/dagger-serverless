@@ -21,19 +21,16 @@ TestApi: serverless.#Api & {
 TestApiWithModel: serverless.#Api & {
 	name: "inline-model-api"
 	models: {
-		User: {
+		User: serverless.#Model & {
 			type: "object"
 			required: ["username", "employee_id"]
 			properties: {
-				username:
-					type: "string"
-				employee_id:
-					type: "integer"
-				department:
-					type: "string"
+				username: type:    "string"
+				employee_id: type: "integer"
+				department: type:  "string"
 			}
 		}
-		Item: {
+		Item: serverless.#Model & {
 			type: "object"
 			properties: {
 				count:
@@ -44,5 +41,5 @@ TestApiWithModel: serverless.#Api & {
 					type: "integer"
 			}
 		}
-	}
+}
 }
