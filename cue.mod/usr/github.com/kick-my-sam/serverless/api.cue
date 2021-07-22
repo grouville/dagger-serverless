@@ -77,7 +77,7 @@ import (
 	models: dagger.#Input & {[string]: #Model}
 
 	#manifest: {
-		Type: "AWS::Serverless::API"
+		Type: "AWS::Serverless::Api"
 		Properties: {
 			StageName: stage
 			if name != null {
