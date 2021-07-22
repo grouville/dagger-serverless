@@ -1,0 +1,23 @@
+plan:
+    package: ./examples/api
+name: example-api
+sops:
+    kms: []
+    gcp_kms: []
+    azure_kv: []
+    hc_vault: []
+    age:
+        - recipient: age1gxwmtwahzwdmrskhf90ppwlnze30lgpm056kuesrxzeuyclrwvpsupwtpk
+          enc: |
+            -----BEGIN AGE ENCRYPTED FILE-----
+            YWdlLWVuY3J5cHRpb24ub3JnL3YxCi0+IFgyNTUxOSByYkVWRHpUK2lWY1JIb2Zp
+            aUV1SkVFOUVFbFh1Q0hTT2NTWGtPcTM2MW5ZCmZvdWFVNFVVT01aV1hOUElpak45
+            akcvMEJFK3Q4alloSjNwQVJnRTF4dTQKLS0tIHEwYUhtY3dWZ1lLcW1oaXVvSGhM
+            QlBBenRuTCtYdkZhQ1paR2dNMTExYTAKnweuiayrmNVSBUHv5j23WYVCxXGPhJiC
+            xRMQj/mz61k8KMc9xLybdSYrghiPau5AeDeZbsQZpOg9EHeO/bx5OQ==
+            -----END AGE ENCRYPTED FILE-----
+    lastmodified: "2021-07-21T14:27:20Z"
+    mac: ENC[AES256_GCM,data:2EmoH1E+NOADMIbmfL4FZlGfBfH4hajhUDWdDwdIIXxp1UUV8/fusLDPIYhj79e4DWXDQJvawBhCvOmrnBkWfTmJhVQ8K2+fCf7D64QNV3iUi5svYAYTlKsCcU4i1HqeDBMSSMbul/nMFzzsJwLyoWhOJOBq+E1u4kSKOkrXwhs=,iv:L72jZhsTCcIv3slS8uKcJD2L9Kv9Kk/ZA67LPBMsLNU=,tag:MYGHvnxIh7Ftx1RjLh0Waw==,type:str]
+    pgp: []
+    encrypted_suffix: secret
+    version: 3.7.1
