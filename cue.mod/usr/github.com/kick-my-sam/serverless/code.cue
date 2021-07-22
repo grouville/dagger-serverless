@@ -27,6 +27,9 @@ import (
 	// Dagger serverless infrastructure deployment
 	infra: #Stack & {"config": config}
 
+	// Function's handler
+	handler: dagger.#Input & {*null | string}
+
 	deployment: {
 		// If source is an artifact to zip
 		if type == "Zip" && (source & string) == _|_ {

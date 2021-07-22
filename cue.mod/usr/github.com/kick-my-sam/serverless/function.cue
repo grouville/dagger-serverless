@@ -21,9 +21,6 @@ import (
 		}
 	}}
 
-	// Function's handler
-	handler: dagger.#Input & {*null | string}
-
 	// Runtime to execute function
 	runtime: dagger.#Input & {string}
 
@@ -51,8 +48,8 @@ import (
 	#manifest: {
 		Type: "AWS::Serverless::Function"
 		Properties: {
-			if handler != null {
-				Handler: handler
+			if code.handler != null {
+				Handler: code.handler
 			}
 
 			// Add source code

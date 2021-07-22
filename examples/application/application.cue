@@ -68,5 +68,23 @@ TestFunctionZip2: serverless.#Function & {
 	}
 }
 
-output:  dagger.#Output & {json.Marshal(TestFunctionZip.#manifest)}
-output2: dagger.#Output & {json.Marshal(TestFunctionZip2.#manifest)}
+TestCors: serverless.#Cors & {
+	origin:  "example.com"
+	methods: "GET"
+	maxAge:  500
+}
+
+TestApi: serverless.#Api & {
+	name:  "my-cool-api"
+	stage: "Toto"
+	cors:  TestCors
+}
+
+TestApplication: serverless.#Application & {
+	config:      TestConfig
+	description: "My cool application"
+	functions: [TestFunctionZip2, TestFunctionZip]
+	api: TestApi
+}
+
+result: json.Marshal(TestApplication.#manifest)
