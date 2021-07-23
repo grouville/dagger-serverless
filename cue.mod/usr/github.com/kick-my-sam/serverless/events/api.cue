@@ -7,14 +7,14 @@ import (
 // Build API Event for AWS::Serverless::Function
 #Api: {
 	// HTTP method for which this function is invoked
-	method: *"any" | string
+	method: dagger.#Input & {*"any" | string}
 
 	// Uri path for which this function is invoked.
 	// Must start with /
 	path: dagger.#Input & {=~"^\/(.*)"}
 
 	// Request parameters configuration
-	parameters: [...string]
+	parameters: dagger.#Input & {[...string]}
 
 	#manifest: {
 		Type: "Api"

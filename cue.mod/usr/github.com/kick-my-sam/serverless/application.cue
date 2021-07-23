@@ -8,16 +8,16 @@ import (
 // Deploy serverless application to AWS
 #Application: {
 	// Aws credentials
-	config: dagger.#Input & {aws.#Config}
+	config: aws.#Config
 
 	// Application description
 	description: dagger.#Input & {string}
 
 	// Application's functions
-	functions: dagger.#Input & {[...#Function]}
+	functions: [...#Function]
 
 	// Application api configuration
-	api: dagger.#Input & {*null | #Api}
+	api: *null | #Api
 
 	#manifest: {
 		AWSTemplateFormatVersion: "2010-09-09"

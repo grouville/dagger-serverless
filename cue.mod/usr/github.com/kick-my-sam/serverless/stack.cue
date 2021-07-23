@@ -11,7 +11,7 @@ import (
 // Create infrastructure
 #Stack: {
 	// AWS config credentials
-	config: dagger.#Input & {aws.#Config}
+	config: aws.#Config
 
 	// Stack name
 	name: *"dagger-serverless" | string

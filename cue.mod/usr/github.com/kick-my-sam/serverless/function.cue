@@ -14,12 +14,12 @@ import (
 	name: dagger.#Input & {string}
 
 	// Function's code
-	code: dagger.#Input & {#Code & {
+	code: #Code & {
 		// Check if code already has a name
 		if code.name == _|_ {
 			"name": name
 		}
-	}}
+	}
 
 	// Runtime to execute function
 	runtime: dagger.#Input & {string}
@@ -37,13 +37,13 @@ import (
 	policies: dagger.#Input & {*"AWSLambdaBasicExecutionRole" | string}
 
 	// Environement
-	environments: dagger.#Input & {[string]: string}
+	environments: [string]: string
 
 	// Tags
-	tags: dagger.#Input & {[string]: string}
+	tags: [string]: string
 
 	// Events
-	events: dagger.#Input & {[string]: #Event}
+	events: [string]: #Event
 
 	#manifest: {
 		Type: "AWS::Serverless::Function"
