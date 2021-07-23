@@ -1,8 +1,6 @@
 package example
 
 import (
-	"encoding/json"
-
 	"alpha.dagger.io/dagger"
 	"alpha.dagger.io/aws"
 
@@ -71,5 +69,3 @@ TestApplication: serverless.#Application & {
 	functions: [TestFunctionZip2, TestFunctionZip]
 	global: serverless.#Global & {cors: TestCors}
 }
-
-result: dagger.#Output & {json.Marshal(TestApplication.#manifest)}

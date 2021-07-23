@@ -1,8 +1,12 @@
 package serverless
 
 import (
+	"encoding/json"
+
 	"alpha.dagger.io/dagger"
 	"alpha.dagger.io/aws"
+
+	"github.com/kick-my-sam/aws/sam"
 )
 
 #Global: {
@@ -34,6 +38,9 @@ import (
 	// Aws credentials
 	config: aws.#Config
 
+	// Application name
+	name: dagger.#Input & {*"dagger-serverless-application" | string}
+
 	// Application description
 	description: dagger.#Input & {string}
 
@@ -45,6 +52,9 @@ import (
 
 	// Global application configuration
 	global: *null | #Global
+
+	// S3 bucket uri to store application template
+	bucket: dagger.#Input & {*"s3://dagger-serverless-bucket" | =~"^s3:\/\/(.*)"}
 
 	#manifest: {
 		AWSTemplateFormatVersion: "2010-09-09"
@@ -91,5 +101,12 @@ import (
 				}
 			}
 		}
+	}
+
+	deployment: sam.#SAM & {
+		"config":  config
+		stackName: name
+		template:  json.Marshal(#manifest)
+		"bucket":  bucket
 	}
 }
