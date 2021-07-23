@@ -53,7 +53,7 @@ import (
 // Build AWS::Serverless::API
 #Api: {
 	// A name for the API Gateway RestApi resource
-	name: dagger.#Input & {*null | string}
+	name: dagger.#Input & {=~"^[a-zA-Z0-9]*$"}
 
 	// The name of the stage, which API Gateway uses
 	// as the first path segment in the URI
@@ -80,9 +80,7 @@ import (
 		Type: "AWS::Serverless::Api"
 		Properties: {
 			StageName: stage
-			if name != null {
-				Name: name
-			}
+			Name:      name
 
 			// Cors
 			if cors != null {

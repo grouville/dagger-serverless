@@ -22,10 +22,16 @@ func main() {
 	r := chi.NewRouter()
 	r.Use(middleware.Logger)
 	r.Get("/tutu", func(w http.ResponseWriter, r *http.Request) {
-		w.Write([]byte("welcome Tata"))
+		w.Write([]byte("welcome Tutu"))
 	})
 	r.Get("/tyty", func(w http.ResponseWriter, r *http.Request) {
 		w.Write([]byte("welcome Tyty"))
+	})
+	r.Get("/toto", func(w http.ResponseWriter, r *http.Request) {
+		w.Write([]byte("welcome Toto"))
+	})
+	r.Get("/tata", func(w http.ResponseWriter, r *http.Request) {
+		w.Write([]byte("welcome Tata"))
 	})
 
 	chiLambda = chiadapter.New(r)

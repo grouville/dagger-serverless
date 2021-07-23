@@ -1,6 +1,10 @@
 plan:
     package: ./examples/application
 name: example-application
+inputs:
+    TestCodeDirectory:
+        dir:
+            path: ./deploy/zip_deploy
 sops:
     kms: []
     gcp_kms: []
@@ -16,8 +20,8 @@ sops:
             eTRIVk96S2ZubUMxaVVjcDRSZkk4b1EKa0vwXsK3jCdbwIBz4KJzVWnQSW4w9eW5
             D2Xccb9DzQriLnVouIlYhlQ64nldS5r1gumklr0+KBvXjDbcPPtgxw==
             -----END AGE ENCRYPTED FILE-----
-    lastmodified: "2021-07-22T16:04:10Z"
-    mac: ENC[AES256_GCM,data:SsvSpi5XjSZzuxeW80yy/L1uIVHgAVNTLHOrW22ql0G82ISjNwrS+GgxBYEv+mHroZBc0Qn6I+ZGvQrWHKFRiNR+adw31+DvBiFrZ6+Eiugy00faDWTOPClwtqxHhc9g1jV+d+M7jeFMTWZJ1O5UZ62nzXmNcXMtmPoqZj9WVrU=,iv:4UrWChAtzeJmQDc9eFmA0vav2dEQTB8vAmPLlMJYI/s=,tag:hDjQBF9tCpzToEiyy5k/Fw==,type:str]
+    lastmodified: "2021-07-23T15:03:27Z"
+    mac: ENC[AES256_GCM,data:a5w1+GcjFc7Sukjgnflg/T42+0MTkcLavMpK7QtAP2KF+uTTaynwQ4xySCgdhQuau/0SFGa+2jmjTmgAk+WplU5WIKUToZ5gTkaPewYYFHO6aqp5SnEGiwDbUui6GLEisMy0xQ0NqgVOlJNlTrYUasI+sHUcQPUfj9r4w5Z1gL0=,iv:/SOIvcS/qSMU17sUa+N8SFLCZWRDhY/S8IyI/PtXIcI=,tag:Udl43HjNOIETrYw7KFV/mQ==,type:str]
     pgp: []
     encrypted_suffix: secret
     version: 3.7.1
