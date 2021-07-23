@@ -15,7 +15,7 @@ TestCodeDirectory: dagger.#Input & {dagger.#Artifact}
 
 TestCodeZip: serverless.#Code & {
 	config:  TestConfig
-	name:    "go-cool-func"
+	name:    "goCoolFunc"
 	source:  TestCodeDirectory
 	handler: "index.handler"
 }
@@ -24,7 +24,7 @@ TestImageDirectory: dagger.#Input & {dagger.#Artifact}
 
 TestCodeImage: serverless.#Code & {
 	config:  TestConfig
-	name:    "go-cool-image"
+	name:    "goCoolImage"
 	source:  TestImageDirectory
 	type:    "Image"
 	handler: "index.handler"

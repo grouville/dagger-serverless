@@ -11,7 +11,7 @@ TestCors: serverless.#Cors & {
 }
 
 TestApi: serverless.#Api & {
-	name:  "my-cool-api"
+	name:  "myCoolApi"
 	stage: "Toto"
 	cors:  TestCors
 }
@@ -19,7 +19,7 @@ TestApi: serverless.#Api & {
 // From official aws reference
 // https://docs.aws.amazon.com/serverless-application-model/latest/developerguide/sam-resource-api.html#sam-api-models
 TestApiWithModel: serverless.#Api & {
-	name: "inline-model-api"
+	name: "inlineModelApi"
 	models: {
 		User: serverless.#Model & {
 			type: "object"

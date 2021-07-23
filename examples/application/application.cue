@@ -20,71 +20,56 @@ TestCode: serverless.#Code & {
 	name:    "go-cool-func"
 	config:  TestConfig
 	source:  TestCodeDirectory
-	handler: "index.handler"
+	handler: "lambda-tata"
 }
 
 TestCode2: serverless.#Code & {
 	name:    "go-cool-func-two"
 	config:  TestConfig
 	source:  TestCodeDirectory
-	handler: "index.handler"
-}
-
-api: events.#Api & {
-	path: "/get"
-}
-
-queue: events.#SQS & {
-	queue: "fake::arn"
+	handler: "lambda-tata"
 }
 
 TestFunctionZip: serverless.#Function & {
-	name:    "my-cool-func"
+	name:    "myCoolFunc"
 	code:    TestCode
 	runtime: "go1.x"
 	"events": {
-		"api":   api
-		"queue": queue
-		"cat":   events.#Api & {
-			path: "/cat"
+		"api": events.#Api & {
+			path: "/tyty"
+		}
+		"cat": events.#Api & {
+			path: "/tutu"
 		}
 	}
 }
 
 TestFunctionZip2: serverless.#Function & {
-	name:    "my-cool-func2"
+	name:    "myCoolFunc2"
 	code:    TestCode2
 	runtime: "go1.x"
 	"events": {
 		"api": events.#Api & {
-			"path": "/foo"
-		}
-		"queue": events.#SQS & {
-			queue: "fake::arn"
+			"path":   "/toto"
+			"method": "get"
 		}
 		"tata": events.#Api & {
-			path: "/bar"
+			path: "/tata"
 		}
 	}
 }
 
 TestCors: serverless.#Cors & {
-	origin:  "example.com"
+	origin:  "*"
 	methods: "GET"
 	maxAge:  500
-}
-
-TestApi: serverless.#Api & {
-	name:  "my-cool-api"
-	stage: "Toto"
-	cors:  TestCors
 }
 
 TestApplication: serverless.#Application & {
 	config:      TestConfig
 	description: "My cool application"
 	functions: [TestFunctionZip2, TestFunctionZip]
-	api: TestApi
+	global: serverless.#Global & {cors: TestCors}
 }
 
-result: json.Marshal(TestApplication.#manifest)
+result: dagger.#Output & {json.Marshal(TestApplication.#manifest)}
