@@ -39,13 +39,13 @@ import (
 	config: aws.#Config
 
 	// Application name
-	name: dagger.#Input & {*"dagger-serverless-application" | string}
+	name: dagger.#Input & {*"dagger-serverless-application" | =~"^[a-zA-Z-]+$"}
 
 	// Application description
 	description: dagger.#Input & {string}
 
 	// Application's functions
-	functions: [...#Function]
+	functions: [=~"^[a-zA-Z0-9]*$"]: #Function
 
 	// Application api configuration
 	api: *null | #Api
@@ -66,8 +66,8 @@ import (
 		}
 
 		Resources: {
-			for f in functions {
-				"\(f.name)": {
+			for name, f in functions {
+				"\(name)": {
 					f.#manifest
 
 					if api != null {
@@ -90,14 +90,14 @@ import (
 					Value: "Fn::Sub": "https://${ServerlessRestApi}.execute-api.${AWS::Region}.amazonaws.com/Prod/"
 				}
 			}
-			for f in functions {
-				"\(f.name)Function": {
-					"Description": "\(f.name) Function ARN"
-					"Value": "Fn::GetAtt": ["\(f.name)", "Arn"]
+			for name, f in functions {
+				"\(name)Function": {
+					"Description": "\(name) Function ARN"
+					"Value": "Fn::GetAtt": ["\(name)", "Arn"]
 				}
-				"\(f.name)IamRole": {
-					"Description": "Implicit IAM Role created for \(f.name) function"
-					"Value": "Fn::GetAtt": ["\(f.name)Role", "Arn"]
+				"\(name)IamRole": {
+					"Description": "Implicit IAM Role created for \(name) function"
+					"Value": "Fn::GetAtt": ["\(name)Role", "Arn"]
 				}
 			}
 		}
