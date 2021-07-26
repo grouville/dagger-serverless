@@ -1,0 +1,27 @@
+plan:
+    package: ./examples/tata-app
+name: tata-app
+inputs:
+    TestCodeDirectory:
+        dir:
+            path: ./deploy/zip_deploy
+sops:
+    kms: []
+    gcp_kms: []
+    azure_kv: []
+    hc_vault: []
+    age:
+        - recipient: age1gxwmtwahzwdmrskhf90ppwlnze30lgpm056kuesrxzeuyclrwvpsupwtpk
+          enc: |
+            -----BEGIN AGE ENCRYPTED FILE-----
+            YWdlLWVuY3J5cHRpb24ub3JnL3YxCi0+IFgyNTUxOSBlaU1PRk9aeWVhdzVkNG5F
+            TGZ3L3pNZTlSTG5Cb1hMRjBJeG9LU2NUUUJzCm5adFVVSkxOVy92b2FCQkk3anE3
+            K0VtQmNuVVVKOXNCRFBSV2FEUHZScUkKLS0tIFZVRnRwbEcxR2dEeUFOU2pld0R1
+            cXhLL3Z2Z2lOTzdPQlRNVTlGb0UwQ2sKMIdAtmDxQhcGmEXuynjFZI3A388Izhl3
+            i6lVs+ZOgQw754NKT5/vhYAAViqBQw7DZ0FIGiXkvcNxWoC7qIYBmQ==
+            -----END AGE ENCRYPTED FILE-----
+    lastmodified: "2021-07-26T15:20:59Z"
+    mac: ENC[AES256_GCM,data:TLzXKigQ6ltmzeFgaqHVc9BQz9Q4qlEEi32U9y33pqjCbSP1OY1nVWIzi9tlYRCrX49XXdXkWGH9PXNYmp5Foxg0hIObaflq1NNyn5dLlRXT8y3WwmX0Jv3CMtSdhm377+NCgdp5Hq950qS91yYgePtf6Xtqn1ko5IkTY7dQ+Cs=,iv:yPS5XxVdJ5cB1ISdO/DtE8U8nasf/O2wJkf8UFP+bIw=,tag:WVYLVMJ1OFksi+w19dakpA==,type:str]
+    pgp: []
+    encrypted_suffix: secret
+    version: 3.7.1

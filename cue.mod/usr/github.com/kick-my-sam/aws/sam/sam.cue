@@ -21,7 +21,7 @@ import (
 	// S3 bucket uri to store template 
 	bucket: dagger.#Input & {=~"^s3:\/\/(.*)"}
 
-	outputs: dagger.#Output & {[string]: string}
+	outputs: [string]: string & dagger.#Output
 	outputs: #up: [
 		op.#Load & {
 			from: aws.#CLI & {

@@ -19,8 +19,9 @@ package sam
 	# Deploy stack
 	aws cloudformation deploy \
 		--template-file output-template.yaml \
-		--stack-name "$STACK_NAME"
-		--capabilities CAPABILITY_IAM
+		--stack-name "$STACK_NAME" \
+		--capabilities CAPABILITY_IAM \
+		--no-fail-on-empty-changeset
 
 	getOutputs
 	"""#
