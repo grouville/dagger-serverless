@@ -28,7 +28,7 @@ import (
 	infra: #Stack & {"config": config}
 
 	// Function's handler
-	handler: dagger.#Input & {*null | string}
+	handler: dagger.#Input & {*null | =~"^[\\S]+$"}
 
 	deployment: {
 		// If source is an artifact to zip

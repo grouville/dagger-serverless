@@ -6,18 +6,18 @@ import (
 
 #Cors: {
 	// String of origin to allow
-	origin: dagger.#Input & {string}
+	origin: dagger.#Input & {=~"^[\\S]+$"}
 
 	// String of headers to allow
 	// E.g "X-Forwarded-For"
-	headers: dagger.#Input & {*null | string}
+	headers: dagger.#Input & {*null | =~"^[\\S]+$"}
 
 	// String containing the HTTP methods to allow
 	// E.g "GET, POST"
-	methods: dagger.#Input & {*null | string}
+	methods: dagger.#Input & {*null | =~"^[a-zA-Z]+$"}
 
 	// String containing the number of seconds to cache CORS Preflight reques
-	maxAge: dagger.#Input & {*null | number}
+	maxAge: dagger.#Input & {*null | number & >0}
 
 	// Boolean indicating whether request is allowed to contain credentials.
 	credentials: dagger.#Input & {*null | bool}
@@ -41,7 +41,7 @@ import (
 
 #Model: {
 	// Model data types
-	type: dagger.#Input & {string}
+	type: =~"^[\\S]+$"
 
 	// Required field
 	required: [...string]
@@ -57,7 +57,7 @@ import (
 
 	// The name of the stage, which API Gateway uses
 	// as the first path segment in the URI
-	stage: dagger.#Input & {string}
+	stage: dagger.#Input & {=~"^[\\S]+$"}
 
 	// Manage Cross-origin resource sharing
 	// Specify the domain to allow as a string or specify a dictionary

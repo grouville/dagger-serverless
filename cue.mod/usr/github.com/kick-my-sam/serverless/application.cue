@@ -10,7 +10,7 @@ import (
 )
 
 #Global: {
-	timeout: dagger.#Input & {*null | number}
+	timeout: dagger.#Input & {*null | number & >0}
 
 	cors: *null | #Cors
 
