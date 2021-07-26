@@ -10,16 +10,8 @@ import (
 
 // Build AWS::ServerlessFunction
 #Function: {
-	// Function manifest name
-	name: dagger.#Input & {=~"^[a-zA-Z0-9]*$"}
-
 	// Function's code
-	code: #Code & {
-		// Check if code already has a name
-		if code.name == _|_ {
-			"name": name
-		}
-	}
+	code: #Code
 
 	// Runtime to execute function
 	runtime: dagger.#Input & {string}

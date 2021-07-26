@@ -39,7 +39,6 @@ queue: events.#SQS & {
 }
 
 TestFunctionZip: serverless.#Function & {
-	name:    "myCoolFunc"
 	code:    TestCode
 	runtime: "go1.x"
 	"events": {
@@ -52,7 +51,6 @@ TestFunctionZip: serverless.#Function & {
 }
 
 TestFunctionZip2: serverless.#Function & {
-	name:    "myCoolFunc2"
 	code:    TestCode2
 	runtime: "go1.x"
 	"events": {

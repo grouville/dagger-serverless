@@ -60,6 +60,9 @@ import (
 					]
 				}
 			}
+			BucketURI: {
+				Value: {"Ref": "Bucket"}
+			}
 		}
 	})
 
@@ -70,10 +73,10 @@ import (
 	}
 
 	// ECR Repository URI
-	registoryUri: dagger.#Output & {string}
-	registoryUri: cfn.outputs.RegistryURI
+	registryUri: dagger.#Output & {string}
+	registryUri: cfn.outputs.RegistryURI
 
 	// S3 bucket URI
 	bucketUri: dagger.#Output & {string}
-	bucketUri: "s3://\(bucketName)"
+	bucketUri: "s3://\(cfn.outputs.BucketURI)"
 }
