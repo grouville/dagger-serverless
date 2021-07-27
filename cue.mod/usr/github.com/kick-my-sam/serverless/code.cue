@@ -28,7 +28,7 @@ import (
 	infra: #Stack & {"config": config}
 
 	// Function's handler
-	handler: dagger.#Input & {*null | string}
+	handler: dagger.#Input & {*null | =~"^[\\S]+$"}
 
 	deployment: {
 		// If source is an artifact to zip
@@ -50,7 +50,7 @@ import (
 
 		// If source is an artifact to build
 		if type == "Image" && (source & string) == _|_ {
-			ref: "\(infra.registoryUri):\(name)"
+			ref: "\(infra.registryUri):\(name)"
 
 			code: docker.#Build & {"source": source}
 

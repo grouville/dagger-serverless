@@ -10,37 +10,29 @@ import (
 
 // Build AWS::ServerlessFunction
 #Function: {
-	// Function manifest name
-	name: dagger.#Input & {=~"^[a-zA-Z0-9]*$"}
-
 	// Function's code
-	code: #Code & {
-		// Check if code already has a name
-		if code.name == _|_ {
-			"name": name
-		}
-	}
+	code: #Code
 
 	// Runtime to execute function
-	runtime: dagger.#Input & {string}
+	runtime: dagger.#Input & {=~"^[\\S]+$"}
 
 	// Memory size
-	memorySize: dagger.#Input & {*512 | number}
+	memorySize: dagger.#Input & {*512 | number & >0}
 
 	// Timeout
-	timeout: dagger.#Input & {*60 | number}
+	timeout: dagger.#Input & {*60 | number & >0}
 
 	// Tracing
 	tracing: dagger.#Input & {*null | "Active" | "PassThrough"}
 
 	// Policies
-	policies: dagger.#Input & {*"AWSLambdaBasicExecutionRole" | string}
+	policies: dagger.#Input & {*"AWSLambdaBasicExecutionRole" | =~"^[\\S]+$"}
 
 	// Environement
-	environments: [string]: string
+	environments: [string]: =~"^[\\S]+$"
 
 	// Tags
-	tags: [string]: string
+	tags: [string]: =~"^[\\S]+$"
 
 	// Events
 	events: [string]: #Event

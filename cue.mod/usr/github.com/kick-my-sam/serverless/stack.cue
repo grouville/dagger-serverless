@@ -14,13 +14,13 @@ import (
 	config: aws.#Config
 
 	// Stack name
-	name: *"dagger-serverless" | string
+	name: *"dagger-serverless" | =~"^[a-zA-Z0-9-_]+$"
 
 	// S3 bucket name
-	bucketName: *"dagger-serverless-bucket" | string
+	bucketName: *"dagger-serverless-bucket" | =~"^[a-zA-Z0-9-_]+$"
 
 	// ECR repository name
-	registryName: *"dagger-serverless-registry" | string
+	registryName: *"dagger-serverless-registry" | =~"^[a-zA-Z0-9-_]+$"
 
 	#template: json.Marshal({
 		AWSTemplateFormatVersion: "2010-09-09"
@@ -60,6 +60,9 @@ import (
 					]
 				}
 			}
+			BucketURI: {
+				Value: {"Ref": "Bucket"}
+			}
 		}
 	})
 
@@ -70,10 +73,10 @@ import (
 	}
 
 	// ECR Repository URI
-	registoryUri: dagger.#Output & {string}
-	registoryUri: cfn.outputs.RegistryURI
+	registryUri: dagger.#Output & {string}
+	registryUri: cfn.outputs.RegistryURI
 
 	// S3 bucket URI
 	bucketUri: dagger.#Output & {string}
-	bucketUri: "s3://\(bucketName)"
+	bucketUri: "s3://\(cfn.outputs.BucketURI)"
 }

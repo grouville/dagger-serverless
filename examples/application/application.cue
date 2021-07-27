@@ -1,8 +1,6 @@
 package example
 
 import (
-	"encoding/json"
-
 	"alpha.dagger.io/dagger"
 	"alpha.dagger.io/aws"
 
@@ -31,7 +29,6 @@ TestCode2: serverless.#Code & {
 }
 
 TestFunctionZip: serverless.#Function & {
-	name:    "myCoolFunc"
 	code:    TestCode
 	runtime: "go1.x"
 	"events": {
@@ -45,7 +42,6 @@ TestFunctionZip: serverless.#Function & {
 }
 
 TestFunctionZip2: serverless.#Function & {
-	name:    "myCoolFunc2"
 	code:    TestCode2
 	runtime: "go1.x"
 	"events": {
@@ -68,8 +64,9 @@ TestCors: serverless.#Cors & {
 TestApplication: serverless.#Application & {
 	config:      TestConfig
 	description: "My cool application"
-	functions: [TestFunctionZip2, TestFunctionZip]
+	functions: {
+		myCoolFunc:  TestFunctionZip
+		myCoolFunc2: TestFunctionZip2
+	}
 	global: serverless.#Global & {cors: TestCors}
 }
-
-result: dagger.#Output & {json.Marshal(TestApplication.#manifest)}
