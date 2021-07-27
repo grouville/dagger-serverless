@@ -1,12 +1,16 @@
 package serverless
 
 import (
+	"encoding/json"
+
 	"alpha.dagger.io/dagger"
 	"alpha.dagger.io/aws"
+
+	"github.com/kick-my-sam/aws/sam"
 )
 
 #Global: {
-	timeout: dagger.#Input & {*null | number}
+	timeout: dagger.#Input & {*null | number & >0}
 
 	cors: *null | #Cors
 
@@ -34,17 +38,23 @@ import (
 	// Aws credentials
 	config: aws.#Config
 
+	// Application name
+	name: dagger.#Input & {*"dagger-serverless-application" | =~"^[a-zA-Z-]+$"}
+
 	// Application description
 	description: dagger.#Input & {string}
 
 	// Application's functions
-	functions: [...#Function]
+	functions: [=~"^[a-zA-Z0-9]+$"]: #Function
 
 	// Application api configuration
 	api: *null | #Api
 
 	// Global application configuration
 	global: *null | #Global
+
+	// S3 bucket uri to store application template
+	bucket: dagger.#Input & {*"s3://dagger-serverless-bucket" | =~"^s3:\/\/(.*)"}
 
 	#manifest: {
 		AWSTemplateFormatVersion: "2010-09-09"
@@ -56,8 +66,8 @@ import (
 		}
 
 		Resources: {
-			for f in functions {
-				"\(f.name)": {
+			for name, f in functions {
+				"\(name)": {
 					f.#manifest
 
 					if api != null {
@@ -80,16 +90,23 @@ import (
 					Value: "Fn::Sub": "https://${ServerlessRestApi}.execute-api.${AWS::Region}.amazonaws.com/Prod/"
 				}
 			}
-			for f in functions {
-				"\(f.name)Function": {
-					"Description": "\(f.name) Function ARN"
-					"Value": "Fn::GetAtt": ["\(f.name)", "Arn"]
+			for name, f in functions {
+				"\(name)Function": {
+					"Description": "\(name) Function ARN"
+					"Value": "Fn::GetAtt": ["\(name)", "Arn"]
 				}
-				"\(f.name)IamRole": {
-					"Description": "Implicit IAM Role created for \(f.name) function"
-					"Value": "Fn::GetAtt": ["\(f.name)Role", "Arn"]
+				"\(name)IamRole": {
+					"Description": "Implicit IAM Role created for \(name) function"
+					"Value": "Fn::GetAtt": ["\(name)Role", "Arn"]
 				}
 			}
 		}
+	}
+
+	deployment: sam.#SAM & {
+		"config":  config
+		stackName: name
+		template:  json.Marshal(#manifest)
+		"bucket":  bucket
 	}
 }
