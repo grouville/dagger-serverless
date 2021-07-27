@@ -14,7 +14,8 @@ import (
 
 	// String containing the HTTP methods to allow
 	// E.g "GET, POST"
-	methods: dagger.#Input & {*null | =~"^[a-zA-Z]+$"}
+	// TODO Take an array of string instead of sentence
+	methods: dagger.#Input & {*null | string}
 
 	// String containing the number of seconds to cache CORS Preflight reques
 	maxAge: dagger.#Input & {*null | number & >0}

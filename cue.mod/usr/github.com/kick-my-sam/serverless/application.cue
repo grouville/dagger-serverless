@@ -45,7 +45,7 @@ import (
 	description: dagger.#Input & {string}
 
 	// Application's functions
-	functions: [=~"^[a-zA-Z0-9]*$"]: #Function
+	functions: [=~"^[a-zA-Z0-9]+$"]: #Function
 
 	// Application api configuration
 	api: *null | #Api
