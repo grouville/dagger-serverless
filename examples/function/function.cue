@@ -16,18 +16,22 @@ TestConfig: aws.#Config & {
 
 TestCodeDirectory: dagger.#Input & {dagger.#Artifact}
 
+TestStackName: dagger.#Input & {*"dagger-serverless-function-test" | string}
+
 TestCode: serverless.#Code & {
-	name:    "go-cool-func"
-	config:  TestConfig
-	source:  TestCodeDirectory
-	handler: "index.handler"
+	name:      "go-cool-func"
+	stackName: TestStackName
+	config:    TestConfig
+	source:    TestCodeDirectory
+	handler:   "index.handler"
 }
 
 TestCode2: serverless.#Code & {
-	name:    "go-cool-func-two"
-	config:  TestConfig
-	source:  TestCodeDirectory
-	handler: "index.handler"
+	name:      "go-cool-func-two"
+	stackName: TestStackName
+	config:    TestConfig
+	source:    TestCodeDirectory
+	handler:   "index.handler"
 }
 
 api: events.#Api & {

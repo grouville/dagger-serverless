@@ -11,4 +11,5 @@ TestConfig: aws.#Config & {
 
 TestStack: serverless.#Stack & {
 	config: TestConfig
+	name: "dagger-test-stack-serverless"
 }

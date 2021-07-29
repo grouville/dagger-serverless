@@ -14,13 +14,13 @@ import (
 	config: aws.#Config
 
 	// Stack name
-	name: *"dagger-serverless" | =~"^[a-zA-Z0-9-_]+$"
+	name: dagger.#Input & {=~"^[a-zA-Z-]+$"}
 
 	// S3 bucket name
-	bucketName: *"dagger-serverless-bucket" | =~"^[a-zA-Z0-9-_]+$"
+	bucketName: *"\(name)-bucket" | =~"^[a-zA-Z-]+$"
 
 	// ECR repository name
-	registryName: *"dagger-serverless-registry" | =~"^[a-zA-Z0-9-_]+$"
+	registryName: *"\(name)-registry" | =~"^[a-zA-Z-]+$"
 
 	#template: json.Marshal({
 		AWSTemplateFormatVersion: "2010-09-09"

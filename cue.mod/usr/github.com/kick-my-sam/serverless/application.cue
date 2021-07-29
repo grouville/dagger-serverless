@@ -54,7 +54,7 @@ import (
 	global: *null | #Global
 
 	// S3 bucket uri to store application template
-	bucket: dagger.#Input & {*"s3://dagger-serverless-bucket" | =~"^s3:\/\/(.*)"}
+	bucket: dagger.#Input & {=~"^s3:\/\/(.*)"}
 
 	#manifest: {
 		AWSTemplateFormatVersion: "2010-09-09"
