@@ -14,18 +14,22 @@ TestConfig: aws.#Config & {
 
 TestCodeDirectory: dagger.#Input & {dagger.#Artifact}
 
+TestStackName: dagger.#Input & {*"dagger-serverless-application-test" | string}
+
 TestCode: serverless.#Code & {
-	name:    "go-cool-func"
-	config:  TestConfig
-	source:  TestCodeDirectory
-	handler: "lambda-tata"
+	name:      "go-cool-func"
+	stackName: TestStackName
+	config:    TestConfig
+	source:    TestCodeDirectory
+	handler:   "lambda-tata"
 }
 
 TestCode2: serverless.#Code & {
-	name:    "go-cool-func-two"
-	config:  TestConfig
-	source:  TestCodeDirectory
-	handler: "lambda-tata"
+	name:      "go-cool-func-two"
+	stackName: TestStackName
+	config:    TestConfig
+	source:    TestCodeDirectory
+	handler:   "lambda-tata"
 }
 
 TestFunctionZip: serverless.#Function & {
@@ -64,6 +68,7 @@ TestCors: serverless.#Cors & {
 TestApplication: serverless.#Application & {
 	config:      TestConfig
 	description: "My cool application"
+	bucket:      "s3://\(TestStackName)-bucket"
 	functions: {
 		myCoolFunc:  TestFunctionZip
 		myCoolFunc2: TestFunctionZip2

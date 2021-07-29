@@ -1,11 +1,8 @@
 package tata
 
 import (
-	//"encoding/json"
 
 	"alpha.dagger.io/dagger"
-	//"alpha.dagger.io/dagger/op"
-	//"alpha.dagger.io/alpine"
 	"alpha.dagger.io/aws"
 
 	"github.com/kick-my-sam/serverless"
@@ -18,11 +15,14 @@ TestConfig: aws.#Config & {
 
 TestCodeDirectory: dagger.#Input & {dagger.#Artifact}
 
+TestStackName: dagger.#Input & {*"dagger-serverless-function-test" | string}
+
 TestCodeZip: serverless.#Code & {
-	config:  TestConfig
-	name:    "myCode"
-	source:  TestCodeDirectory
-	handler: "lambda-tata"
+	config:    TestConfig
+	name:      "myCode"
+	stackName: TestStackName
+	source:    TestCodeDirectory
+	handler:   "lambda-tata"
 }
 
 TestFunctionZip: serverless.#Function & {
@@ -36,8 +36,9 @@ TestFunctionZip: serverless.#Function & {
 }
 
 TestApplication: serverless.#Application & {
-	name: "TataApp"
+	name:        "TataApp"
 	config:      TestConfig
+	bucket:      TestCodeZip.infra.bucketUri
 	description: "My tata app"
 	functions: {
 		"Tata": TestFunctionZip

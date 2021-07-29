@@ -18,6 +18,9 @@ import (
 	// Source code name
 	name: dagger.#Input & {=~"^[a-zA-Z-]+$"}
 
+	// Stack name to upload code
+	stackName: dagger.#Input & {=~"^[a-zA-Z-]+$"}
+
 	// Source code of lambda
 	source: dagger.#Input & {dagger.#Artifact | string}
 
@@ -25,7 +28,7 @@ import (
 	type: dagger.#Input & {*"Zip" | "Image"}
 
 	// Dagger serverless infrastructure deployment
-	infra: #Stack & {"config": config}
+	infra: #Stack & {"config": config, name: stackName}
 
 	// Function's handler
 	handler: dagger.#Input & {*null | =~"^[\\S]+$"}
