@@ -1,13 +1,17 @@
 package example
 
 import (
+	"encoding/json"
+
+	"alpha.dagger.io/dagger"
+
 	"github.com/kick-my-sam/serverless"
 )
 
 TestCors: serverless.#Cors & {
-	origin:  "example.com"
-	methods: "GET"
-	maxAge:  500
+	origin: "example.com"
+	methods: ["GET", "POST"]
+	maxAge: 500
 }
 
 TestApi: serverless.#Api & {
@@ -19,7 +23,8 @@ TestApi: serverless.#Api & {
 // From official aws reference
 // https://docs.aws.amazon.com/serverless-application-model/latest/developerguide/sam-resource-api.html#sam-api-models
 TestApiWithModel: serverless.#Api & {
-	name: "inlineModelApi"
+	name:  "inlineModelApi"
+	stage: "Model"
 	models: {
 		User: serverless.#Model & {
 			type: "object"
@@ -43,3 +48,6 @@ TestApiWithModel: serverless.#Api & {
 		}
 }
 }
+
+output1: dagger.#Output & {json.Marshal(TestApi.#manifest)}
+output2: dagger.#Output & {json.Marshal(TestApiWithModel.#manifest)}

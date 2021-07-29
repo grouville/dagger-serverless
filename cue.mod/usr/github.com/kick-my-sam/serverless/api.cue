@@ -1,21 +1,26 @@
 package serverless
 
 import (
+	"strings"
+
 	"alpha.dagger.io/dagger"
 )
+
+// Available http methods
+#HttpMethod: "GET" | "HEAD" | "POST" | "PUT" |
+	"DELETE" | "CONNECT" | "OPTIONS" | "TRACE" | "PATCH"
 
 #Cors: {
 	// String of origin to allow
 	origin: dagger.#Input & {=~"^[\\S]+$"}
 
 	// String of headers to allow
-	// E.g "X-Forwarded-For"
-	headers: dagger.#Input & {*null | =~"^[\\S]+$"}
+	// E.g ["X-Forwarded-For", "content-type"]
+	headers: [...=~"^[\\S]+$"]
 
 	// String containing the HTTP methods to allow
-	// E.g "GET, POST"
-	// TODO Take an array of string instead of sentence
-	methods: dagger.#Input & {*null | string}
+	// E.g ["GET", "POST"]
+	methods: [...#HttpMethod]
 
 	// String containing the number of seconds to cache CORS Preflight reques
 	maxAge: dagger.#Input & {*null | number & >0}
@@ -25,11 +30,11 @@ import (
 
 	#manifest: {
 		AllowOrigin: "'\(origin)'"
-		if methods != null {
-			AllowMethods: "'\(methods)'"
+		if len(methods) > 0 {
+			AllowMethods: "'\(strings.Join(methods, ", "))'"
 		}
-		if headers != null {
-			AllowHeaders: "'\(headers)'"
+		if len(headers) > 0 {
+			AllowHeaders: "'\(strings.Join(headers, ", "))'"
 		}
 		if maxAge != null {
 			MaxAge: "'\(maxAge)'"
