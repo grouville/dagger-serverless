@@ -68,7 +68,7 @@ TestCors: serverless.#Cors & {
 TestApplication: serverless.#Application & {
 	config:      TestConfig
 	description: "My cool application"
-	bucket:      "s3://\(TestStackName)-bucket"
+	bucket:      TestCode.infra.bucketName
 	functions: {
 		myCoolFunc:  TestFunctionZip
 		myCoolFunc2: TestFunctionZip2

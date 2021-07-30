@@ -38,7 +38,7 @@ TestFunctionZip: serverless.#Function & {
 TestApplication: serverless.#Application & {
 	name:        "TataApp"
 	config:      TestConfig
-	bucket:      TestCodeZip.infra.bucketUri
+	bucket:      TestCodeZip.infra.bucketName
 	description: "My tata app"
 	functions: {
 		"Tata": TestFunctionZip
