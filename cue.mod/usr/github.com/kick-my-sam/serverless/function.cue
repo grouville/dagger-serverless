@@ -1,12 +1,33 @@
 package serverless
 
 import (
+	"struct"
+
 	"alpha.dagger.io/dagger"
 	"github.com/kick-my-sam/serverless/events"
 )
 
 // Event list
 #Event: events.#Api | events.#SQS
+
+// Check if a provided event exists
+// in a map of functions
+// If exist : res = true else false
+#_IsEventInFunctions: {
+	type: #Event
+
+	functions: [string]: #Function
+
+	res: *false | bool
+
+	for _, function in functions {
+		for _, e in function.events {
+			if (e & type) != _|_ {
+				res: true
+			}
+		}
+	}
+}
 
 // Build AWS::ServerlessFunction
 #Function: {
