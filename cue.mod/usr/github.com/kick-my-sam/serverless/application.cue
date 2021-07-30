@@ -7,6 +7,7 @@ import (
 	"alpha.dagger.io/aws"
 
 	"github.com/kick-my-sam/aws/sam"
+	"github.com/kick-my-sam/serverless/events"
 )
 
 #Global: {
@@ -81,13 +82,24 @@ import (
 		}
 
 		Outputs: {
-			URL: {
-				Description: "API Gateway endpoint URL"
-				if api != null {
+			if api != null {
+				URL: {
+					Description: "API Gateway endpoint URL"
 					Value: "Fn::Sub": "https://${ServerlessRestApi}.execute-api.${AWS::Region}.amazonaws.com/\(api.stage)/"
 				}
-				if api == null {
-					Value: "Fn::Sub": "https://${ServerlessRestApi}.execute-api.${AWS::Region}.amazonaws.com/Prod/"
+			}
+			if api == null {
+				// Check if an API Gateway is generated
+				let _isApi = #_IsEventInFunctions & {
+					type:        events.#Api
+					"functions": functions
+				}
+
+				if _isApi.res == true {
+					URL: {
+						Description: "API Gateway endpoint URL"
+						Value: "Fn::Sub": "https://${ServerlessRestApi}.execute-api.${AWS::Region}.amazonaws.com/Prod/"
+					}
 				}
 			}
 			for name, f in functions {
