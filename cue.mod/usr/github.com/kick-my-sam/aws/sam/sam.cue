@@ -19,7 +19,7 @@ import (
 	template: dagger.#Input & {string}
 
 	// S3 bucket uri to store template 
-	bucket: dagger.#Input & {=~"^s3:\/\/(.*)"}
+	bucket: dagger.#Input & {=~"^[a-zA-Z-]+$"}
 
 	outputs: [string]: string & dagger.#Output
 	outputs: #up: [

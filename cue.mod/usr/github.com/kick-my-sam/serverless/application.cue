@@ -54,7 +54,7 @@ import (
 	global: *null | #Global
 
 	// S3 bucket uri to store application template
-	bucket: dagger.#Input & {=~"^s3:\/\/(.*)"}
+	bucket: dagger.#Input & {=~"^[a-zA-Z-]+$"}
 
 	#manifest: {
 		AWSTemplateFormatVersion: "2010-09-09"
