@@ -11,7 +11,7 @@ import (
 
 	// Uri path for which this function is invoked.
 	// Must start with /
-	path: dagger.#Input & {=~"^\/[\\S]+$"}
+	path: dagger.#Input & {=~"^\/[\\S]*$"}
 
 	// Request parameters configuration
 	parameters: dagger.#Input & {[...(
