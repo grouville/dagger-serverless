@@ -1,0 +1,28 @@
+plan:
+    package: ./examples/secret
+name: example-secret
+inputs:
+    TestStack.secrets.joe:
+        secret: ENC[AES256_GCM,data:sw4=,iv:RRXQoawRYTmzmVqgTA8d5aPr1lAW2gJWbIJOvtNDe1c=,tag:6p7s1ZXRQqCjZEc71eeNVg==,type:str]
+    TestStack.secrets.toto:
+        secret: ENC[AES256_GCM,data:ZnA=,iv:+d5q4ISvkPo2dovwJBPNTnrLxog4zas4s03yeJXOyYw=,tag:s8Wykp52VbmtkDQq1kqCzw==,type:str]
+sops:
+    kms: []
+    gcp_kms: []
+    azure_kv: []
+    hc_vault: []
+    age:
+        - recipient: age1gxwmtwahzwdmrskhf90ppwlnze30lgpm056kuesrxzeuyclrwvpsupwtpk
+          enc: |
+            -----BEGIN AGE ENCRYPTED FILE-----
+            YWdlLWVuY3J5cHRpb24ub3JnL3YxCi0+IFgyNTUxOSBXb2RnYjJDUlFqN1B6VHc4
+            QVF2bUk3VXNPamtCdkptcElkaXY0U3Z1aWwwCkpGTTJrVGd5R2E5YytnZDRvcGpP
+            Z1ljMndVNmo2cDZpamxpVTA2bXZGTjgKLS0tIDFPelpQWENOWHNuTnJ2ditnTHZH
+            dGZMOFVqMzJrOVArQVI2L2dDdjNJYjQK4KwWHGoV13OXm4EwgZfIX/4hWQheD30J
+            jYG5iXBlTMiaPUtLe6y+BbsPOZkVEocWJn+a8bqUTAfFGFL5lQAneQ==
+            -----END AGE ENCRYPTED FILE-----
+    lastmodified: "2021-08-02T13:29:19Z"
+    mac: ENC[AES256_GCM,data:IwHUwWYke3MsBSpa8AuxpqGwIn40gE+EiUuG0+V8/nYpYTeu8MP5gm2od560rVQvp1yqFj9dFmyldjQJYAUG0DxF5EA/xzXdka3Ebb92BBO8lkSNppiHQU41FHC83zRdWHgX5KLAUwt6uRAT+6Gy7gL6uMHCCWxByKsuU1E71l4=,iv:/iA5QTRzqNHQi5qJpb7rxSSZjlYq5cbRIoFSJPzCaJo=,tag:c5GXshhTjpLhEWerSwqDPw==,type:str]
+    pgp: []
+    encrypted_suffix: secret
+    version: 3.7.1
