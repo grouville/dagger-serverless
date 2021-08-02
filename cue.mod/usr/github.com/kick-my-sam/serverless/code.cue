@@ -22,7 +22,10 @@ import (
 	stackName: dagger.#Input & {=~"^[a-zA-Z-]+$"}
 
 	// Source code of lambda
-	source: dagger.#Input & {dagger.#Artifact | string}
+	source: dagger.#Input & {*null | dagger.#Artifact}
+
+	// Inlined source code of lambda
+	inlineCode: *null | string
 
 	// Source type
 	type: dagger.#Input & {*"Zip" | "Image"}
@@ -35,7 +38,7 @@ import (
 
 	deployment: {
 		// If source is an artifact to zip
-		if type == "Zip" && (source & string) == _|_ {
+		if type == "Zip" && source != null && inlineCode == null {
 			code: zip.#Zip & {
 				"source": source
 				"name":   "\(name).zip"
@@ -52,7 +55,7 @@ import (
 		}
 
 		// If source is an artifact to build
-		if type == "Image" && (source & string) == _|_ {
+		if type == "Image" && source != null && inlineCode == null {
 			ref: "\(infra.registryUri):\(name)"
 
 			code: docker.#Build & {"source": source}
@@ -70,5 +73,7 @@ import (
 
 			imageUri: dagger.#Output & {"\(remoteCode.ref)"}
 		}
+
+		
 	}
 }
