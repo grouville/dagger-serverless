@@ -1,10 +1,9 @@
 package serverless
 
 import (
-	"struct"
-
 	"alpha.dagger.io/dagger"
 	"github.com/kick-my-sam/serverless/events"
+	"github.com/kick-my-sam/aws/secretmanager"
 )
 
 // Event list
@@ -52,6 +51,9 @@ import (
 	// Environement
 	environments: [string]: =~"^[\\S]+$"
 
+	// Secrets variable
+	secrets: secretmanager.#Secrets & {"config": code.config}
+
 	// Tags
 	tags: [string]: =~"^[\\S]+$"
 
@@ -85,10 +87,13 @@ import (
 			if tracing != null {
 				Tracing: tracing
 			}
-			if len(environments) > 0 {
+			if len(environments) > 0 || len(secrets) > 0 {
 				Environment: {
 					Variables: {
 						for key, value in environments {
+							"\(key)": value
+						}
+						for key, value in secrets.references {
 							"\(key)": value
 						}
 					}
