@@ -68,14 +68,14 @@ import (
 			}
 
 			// Add source code
-			if code.type == "Zip" && (code.source & string) == _|_ {
+			if code.type == "Zip" && code.source != null && code.inlineCode == null {
 				CodeUri: code.deployment.codeUri
 			}
-			if code.type == "Image" && (code.source & string) == _|_ {
+			if code.type == "Image" && code.source != null && code.inlineCode == null {
 				ImageUri: code.deployment.imageUri
 			}
-			if code.type == "Zip" && (code.source & string) != _|_ {
-				InlineCode: code.source
+			if code.type == "Zip" && code.inlineCode != null {
+				InlineCode: code.inlineCode
 			}
 
 			// Configuration

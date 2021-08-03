@@ -1,4 +1,4 @@
-package tata
+package example
 
 import (
 

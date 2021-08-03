@@ -31,3 +31,22 @@ TestCodeImage: serverless.#Code & {
 	type:      "Image"
 	handler:   "index.handler"
 }
+
+TestInlineCode: #"""
+	    exports.handler = function(event, context, callback) {
+	    console.log(event);
+	        const response = {
+	            statusCode: 200,
+	            body: JSON.stringify('Hello Node')
+	        };
+	        callback(null, response);
+	    };
+	"""#
+
+TestCodeInline: serverless.#Code & {
+	name:       "jsInlineFunc"
+	stackName:  "dagger-inlinecode-test"
+	config:     TestConfig
+	inlineCode: TestInlineCode
+	handler:    "index.handler"
+}
