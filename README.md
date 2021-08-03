@@ -11,17 +11,67 @@ The aim is to integrate the lambda deployment to your current [dagger](https://d
 
 ## :hammer_and_pick: Installation 
 
-Currently, you need to download the latest of the package
+You must download the [release](https://github.com/grouville/kickMySAM/releases) zip `dagger-serverless.zip` that contains everything needed to do serverless with dagger.<br>
+It's a [cue package](https://cuelang.org/docs/concepts/packages/) with the following architecture :
 
-## Examples 
+```bash
+.
+└── github.com
+    └── kick-my-sam             # Our cue packages
+        ├── aws
+        │   ├── sam             # AWS SAM package
+        │   └── secretmanager   # AWS secret managers package
+        ├── serverless          # Serverless package
+        └── zip                 # Zip package
+```
 
-You can discover examples in the [examples folders](./examples) or you can follow the [tutorial](./tutorial) to learn step by step how deploy serverless function with dagger.
+Now, go to your favorite `dagger` project.
+
+Every `dagger` project has two main directory to work :
+```bash
+├── .dagger                   # Dagger directory to store environment
+│   ├── env
+├── cue.mod                   # Cue module to store cue package
+│   ├── module.cue            # Module configuration
+│   ├── pkg                   # Official package (contains dagger package)
+│   │   └── alpha.dagger.io
+│   ├── usr                   # Your personnal cue package (used to store community package)
+```
+
+Now tip the following command to use our `serverless` package :
+
+```bash
+# Go to usr directory
+cd cue.mod/usr
+
+# Move zip into the directory
+mv -t . /my/path/dagger-serverless.zip
+
+# Unzip archive
+unzip dagger-serverless.zip
+
+# Clear archive
+rm dagger-serverless.zip
+
+# List current directory content
+tree
+.
+└── github.com
+    └── kick-my-sam
+    ...
+
+8 directories, 12 files
+```
+
+## :beginner: Quickstart
+
+You can discover examples in the [examples folders](./examples) or you can follow the [tutorial](./tutorial) to learn step by step how deploy serverless function with dagger from scratch.
 
 ## :zap: Features
 
 ### Workflow
 
-![serverless workflow](.github/assets/serverless-dagger-v6.png)
+![serverless workflow](.github/assets/dagger-serverless-workflow.png)
 
 ### Events
 
@@ -35,10 +85,14 @@ You can discover examples in the [examples folders](./examples) or you can follo
 - Secrets management
 - Custom domain integration for API
 - Others [events](https://docs.aws.amazon.com/serverless-application-model/latest/developerguide/sam-property-function-eventsource.html)
+- Layers
+- ALB integration
 
 ## :handshake: Contributing
 
 If you got particular needs, don't hesitate to write an [issue](https://github.com/grouville/kickMySAM/issues) or create a [pull request]((https://github.com/grouville/kickMySAM/pulls)) on our repository ! :rocket:
+
+See the workflow below to contribute.
 
 ### Workflow
 
