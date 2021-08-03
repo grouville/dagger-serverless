@@ -1,0 +1,32 @@
+name: Release
+
+on:
+  workflow_dispatch:
+    inputs:
+      name:
+        description: Release name (tags will suffix it)
+        required: true
+      tags:
+        description: Version Tags
+        required: true
+
+jobs:
+  release_pkg:
+    name: Release package version
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v2
+
+      - name: Zip dagger package
+        uses: papeloto/action-zip@v1
+        with:
+          files: cue.mod/usr/
+          dest: dagger-serverless.zip
+
+      - name: Release
+        uses: softprops/action-gh-release@v1
+        with:
+          name: "${{ github.event.inputs.tags }}-${{ github.event.inputs.name }}"
+          tag_name: ${{ github.event.inputs.tags }}
+          files: dagger-serverless.zip
