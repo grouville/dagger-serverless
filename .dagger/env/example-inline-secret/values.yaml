@@ -1,0 +1,28 @@
+plan:
+    package: ./examples/inline-secret
+name: example-inline-secret
+inputs:
+    TestSecrets.secrets.joe:
+        secret: ENC[AES256_GCM,data:0ztFSNi2,iv:ktEgo2ACBy+iXrfNon2FOapOyT/xrXHkBFhAKJdO2Nc=,tag:+nA5t8rhreQ+s3XWBVWFpA==,type:str]
+    TestSecrets.secrets.toto:
+        secret: ENC[AES256_GCM,data:7yn0fLSX,iv:/i4NlIvaujEXik9xT93IJJ/QPs1sWufLk5m52pw5U4s=,tag:CwHm/+Wvwjsuwbt9p45pHQ==,type:str]
+sops:
+    kms: []
+    gcp_kms: []
+    azure_kv: []
+    hc_vault: []
+    age:
+        - recipient: age1gxwmtwahzwdmrskhf90ppwlnze30lgpm056kuesrxzeuyclrwvpsupwtpk
+          enc: |
+            -----BEGIN AGE ENCRYPTED FILE-----
+            YWdlLWVuY3J5cHRpb24ub3JnL3YxCi0+IFgyNTUxOSBmRi9QMWpVYmF1aCtkeUIx
+            elFqMDd6L0pVK0RuazRaMmVpbzJybUhDQzAwCmFEMDM4UVh3WVluSkNsdHA2U2F6
+            RmkyUHpVNnRwdm8xa1QyaGVPaWRmaHMKLS0tIE1pSmxTMWRMZUI0MC9hcDBETnpn
+            dUFlUnR2ZHZYMnN0MHVGdzJLMFBUN2MKKmW0aHEz6ZsXCIg5R/AH7wnC6GJ6U3uJ
+            Ji+pmtNsZtNSVzgMvf5SgAM3VCp6y2xJEwDcCZlN1xT0fF6VHAZrBQ==
+            -----END AGE ENCRYPTED FILE-----
+    lastmodified: "2021-08-03T00:19:54Z"
+    mac: ENC[AES256_GCM,data:diSzvcFDxknCBiFmBbZ9DRo5jYD7TMBWvfTM5bq5+Uib0QOBcqwX7HA+0SqXGRXaxT3Il6zSosAnZaaiAGMzpo3wEbmlasHzJBeZW8VylLZPm+EExDIy0Gw/w7J31wgbiZmHCkkdpPJdzugeBRd7qLTLhQL89dYqhVucDZkmlqc=,iv:3US1N6DBH8F625AxHI8MDxzCrRZ5F6F6cJIzhRtXznY=,tag:L4MNZ5zmj56WTDk0LP6Wvw==,type:str]
+    pgp: []
+    encrypted_suffix: secret
+    version: 3.7.1

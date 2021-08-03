@@ -32,22 +32,21 @@ TestCodeImage: serverless.#Code & {
 	handler:   "index.handler"
 }
 
-TestinlineCode: #"""
-    |
-        exports.handler = function(event, context, callback) {
-        console.log(event);
-            const response = {
-                statusCode: 200,
-                body: JSON.stringify('Hello Node')
-            };
-            callback(null, response);
-        };
-    """#
+TestInlineCode: #"""
+	    exports.handler = function(event, context, callback) {
+	    console.log(event);
+	        const response = {
+	            statusCode: 200,
+	            body: JSON.stringify('Hello Node')
+	        };
+	        callback(null, response);
+	    };
+	"""#
 
 TestCodeInline: serverless.#Code & {
-	name:    "jsInlineFunc"
-	stackName: "dagger-inlinecode-test"
-	config:  TestConfig
-	inlineCode:  TestinlineCode
-	handler: "index.handler"
+	name:       "jsInlineFunc"
+	stackName:  "dagger-inlinecode-test"
+	config:     TestConfig
+	inlineCode: TestInlineCode
+	handler:    "index.handler"
 }

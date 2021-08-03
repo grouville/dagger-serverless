@@ -74,7 +74,7 @@ import (
 			if code.type == "Image" && code.source != null && code.inlineCode == null {
 				ImageUri: code.deployment.imageUri
 			}
-			if code.type == "Zip" && code.source == null && code.inlineCode != null {
+			if code.type == "Zip" && code.inlineCode != null {
 				InlineCode: code.inlineCode
 			}
 

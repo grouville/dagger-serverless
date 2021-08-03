@@ -73,7 +73,5 @@ import (
 
 			imageUri: dagger.#Output & {"\(remoteCode.ref)"}
 		}
-
-		
 	}
 }
