@@ -61,6 +61,7 @@ TestFunctionInline: serverless.#Function & {
 
 // Application deploys one or more functions
 TestApplication: serverless.#Application & {
+	name:        TestName
 	config:      TestConfig
 	bucket:      TestCode.infra.bucketName
 	description: "Test secret env var reference use"
