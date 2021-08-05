@@ -61,7 +61,7 @@ TestFunctionZip2: serverless.#Function & {
 
 TestCors: serverless.#Cors & {
 	origin:  "*"
-	methods: "GET"
+	methods: ["GET"]
 	maxAge:  500
 }
 
