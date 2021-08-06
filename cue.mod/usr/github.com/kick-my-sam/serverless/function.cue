@@ -52,7 +52,7 @@ import (
 	environments: [string]: =~"^[\\S]+$"
 
 	// Secrets variable
-	secrets: secretmanager.#Secrets & {"config": code.config}
+	secrets: *null | secretmanager.#Secrets & {"config": code.config}
 
 	// Tags
 	tags: [string]: =~"^[\\S]+$"
@@ -87,18 +87,20 @@ import (
 			if tracing != null {
 				Tracing: tracing
 			}
-			if len(environments) > 0 || len(secrets) > 0 {
-				Environment: {
-					Variables: {
-						for key, value in environments {
-							"\(key)": value
-						}
-						for key, value in secrets.references {
-							"\(key)": value
-						}
+
+			// Add environment and secrets
+			Environment: Variables: {
+				for key, value in environments {
+					"\(key)": value
+				}
+				if secrets != null {
+					for key, value in secrets.references {
+						"\(key)": value
 					}
 				}
 			}
+
+			// Tags
 			if len(tags) > 0 {
 				Tags: {
 					for key, value in tags {
