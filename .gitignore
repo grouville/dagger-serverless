@@ -1,3 +1,10 @@
 **/values.yaml
 
+tutorial/**/*.cue
+tutorial/cue.mod/
+tutorial/.dagger/
+
+examples/kick-sam/
+./**/node_modules/
+
 .idea/
