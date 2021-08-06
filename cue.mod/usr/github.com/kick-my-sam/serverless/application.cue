@@ -16,6 +16,10 @@ import (
 	cors: *null | #Cors
 
 	#manifest: {
+		// Global dagger tags
+		Function: Tags: "dagger": "serverless"
+		HttpApi: Tags: "dagger":  "serverless"
+
 		if timeout != null {
 			Function: Timeout: timeout
 		}
@@ -52,7 +56,7 @@ import (
 	api: *null | #Api
 
 	// Global application configuration
-	global: *null | #Global
+	global: #Global
 
 	// S3 bucket uri to store application template
 	bucket: dagger.#Input & {=~"^[a-zA-Z-]+$"}
@@ -62,9 +66,7 @@ import (
 		Transform:                "AWS::Serverless-2016-10-31"
 		Description:              description
 
-		if global != null {
-			Globals: global.#manifest
-		}
+		Globals: global.#manifest
 
 		Resources: {
 			for name, f in functions {
