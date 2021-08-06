@@ -25,9 +25,10 @@ import (
 			args: ["sh", "-c",
 				#"""
 					mkdir -p /output
-					zip -r -j "/output/$ARCHIVE_NAME" /inputs/*
+					zip -r "/output/$ARCHIVE_NAME" *
 					"""#,
 			]
+			dir: "/inputs"
 			mount: "/inputs/": from: source
 			env: ARCHIVE_NAME: name
 		},
