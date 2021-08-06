@@ -1,8 +1,8 @@
 # Dagger serverless tutorial
 
-In this tutorial, you are going to build, setup and deploy your first serverless application.
+In this tutorial, you are going to build, set up and deploy your first serverless application.
 
-It will be a simple [hello-app](./hello-app/source) with one API events.
+It will be a simple [hello-app](./hello-app/source) with one API event.
 
 ## Requirement
 
@@ -35,7 +35,7 @@ cd tutorial
 dagger init
 ```
 
-You can now verify that init is complete by tipping the following command : `ls -a1`.<br>
+You can now verify that init is complete by tipping the following command: `ls -a1`.<br>
 It should display the same list as below.
 
 ```bash
@@ -113,7 +113,7 @@ binary: go.#Build & {
 
 Now you can add the source code as input.
 
-To list available input you can tip the following command :
+To list available input, you can tip the following command :
 
 ```bash
 dagger input list
@@ -139,9 +139,9 @@ You can verify if the input is successfully set with the following command :
 repository       dagger.#Artifact   true         Source code folder or repository
 ```
 
-If you see `true`, its perfect !
+If you see `true`, it's perfect!
 
-Now we can `up` the environment to be sure that binary is successfully build.
+Now we can `up` the environment to be sure that binary is successfully built.
 
 ```bash
 dagger up
@@ -157,11 +157,11 @@ binary.output  "/lambda"  Specify the targeted binary name
 
 ## Step 2 - Upload
 
-Now that we have build our binary, we can upload it to a s3 bucket through `serverless.#Code` definition.
+Now that we have built our binary, we can upload it to an s3 bucket through the `serverless.#Code` definition.
 
 What we need is :
 
-- `stackName`: Infrastructure root name, for s3 bucket, registry and cloud formation.
+- `stackName`: Infrastructure root name for s3 bucket, registry, and cloud formation.
 - `config`: AWS credentials
 - `code`: remote source code and infrastructure supply
 
@@ -237,18 +237,17 @@ code.deployment.remoteCode.target                "s3://hello-app-example-bucket"
 code.deployment.codeUri                          "s3://hello-app-example-bucket/hello-app-lambda.zip"                           -
 ```
 
-> :bulb: If you check on your AWS account, you will see a new cloud formation stack that supply a s3 bucket that contains your source code zip, and an ECR if you want to upload zip as image.
+> :bulb: If you check on your AWS account, you will see a new cloud formation stack that supplies an s3 bucket that contains your source code zip and an ECR if you want to upload zip as an image.
 
 ## Step 3 - Declaration
 
-Now that your code is upload, we will need to define our lambda function thanks `serverless.#Function`. It has two
+Now that your code is upload, we will need to define our lambda function thanks to `serverless.#Function`. It has two
 goal :
 
 - specify the function option, environment...
-- add events to trigger that functions.
+- add events to trigger that function.
 
-For this tutorial, we only want to execute the function on a http call, but there are other events define
-in `serverless.#Events`.
+We only want to execute the function on an HTTP call for this tutorial, but other events are defined in `serverless.#Events`.
 
 > :rocket: Don't hesitate to contribute to that repository if you want to add an event for your needs.
 
@@ -310,11 +309,11 @@ helloLambda: serverless.#Function & {
 
 You can now `dagger up` to see your new outputs.
 
-> :bulb: There are many options available on `serverless.#Function`, don't hesitate to check all cue definition from our repository to learn more.
+> :bulb: There are many options available on `serverless.#Function`, don't hesitate to check all cue definitions from our repository to learn more.
 
 ## Step 4 - Deployment
 
-Your lambda is build, uploaded and configured! It's time to deploy it with `serverless.#Application`!
+Your lambda is built, uploaded, and configured! It's time to deploy it with `serverless.#Application`!
 
 We will add :
 - `application`: the lambda deployment
@@ -384,15 +383,15 @@ application: serverless.#Application & {
 
 You can now `up` the environment :rocket:
 
-As we said, the lambda can be trigger through a http request !
-Let's retrieve the endpoint from output
+As we said, the lambda can be trigger through an HTTP request!
+Let's retrieve the endpoint from the output
 
 ```bash
 dagger output list | grep "application.deployment.outputs.URL"
 # application.deployment.outputs.URL                                                 "https://XXXXXXXXXX.execute-api.XX-XXXX-X.amazonaws.com/Prod/"                                           -
 ```
 
-You can now send a request on `/hello` endpoint to verify that everything is working
+You can now send a request on the `/hello` endpoint to verify that everything is working
 
 ```bash
 curl https://XXXXXXXXXXX.execute-api.XX-XXXX-X.amazonaws.com/Prod/hello
