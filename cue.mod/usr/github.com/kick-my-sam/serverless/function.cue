@@ -2,6 +2,7 @@ package serverless
 
 import (
 	"alpha.dagger.io/dagger"
+
 	"github.com/kick-my-sam/serverless/events"
 	"github.com/kick-my-sam/aws/secretmanager"
 )
@@ -28,10 +29,13 @@ import (
 	}
 }
 
-// Build AWS::ServerlessFunction
+// Build AWS::Serverless::Function
 #Function: {
 	// Function's code
 	code: #Code
+
+	// Function's description
+	description: dagger.#Input & {*null | string}
 
 	// Runtime to execute function
 	runtime: dagger.#Input & {=~"^[\\S]+$"}
@@ -60,6 +64,9 @@ import (
 	// Events
 	events: [string]: #Event
 
+	// Layers
+	layers: [string]: #Layer
+
 	#manifest: {
 		Type: "AWS::Serverless::Function"
 		Properties: {
@@ -84,6 +91,10 @@ import (
 			Policies:    policies
 			Timeout:     timeout
 			PackageType: code.type
+			if description != null {
+				Description: description
+			}
+
 			if tracing != null {
 				Tracing: tracing
 			}
@@ -107,6 +118,15 @@ import (
 						"\(key)": value
 					}
 				}
+			}
+
+			// Layers
+			if len(layers) > 0 {
+				Layers: [
+					for name, _ in layers {
+						Ref: name
+					},
+				]
 			}
 
 			// Events
