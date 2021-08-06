@@ -47,7 +47,7 @@ import (
 	name: dagger.#Input & {*"dagger-serverless-application" | =~"^[a-zA-Z-]+$"}
 
 	// Application description
-	description: dagger.#Input & {string}
+	description: dagger.#Input & {*null | string}
 
 	// Application's functions
 	functions: [=~"^[a-zA-Z0-9]+$"]: #Function
@@ -64,7 +64,9 @@ import (
 	#manifest: {
 		AWSTemplateFormatVersion: "2010-09-09"
 		Transform:                "AWS::Serverless-2016-10-31"
-		Description:              description
+		if description != null {
+			Description: description
+		}
 
 		Globals: global.#manifest
 
@@ -76,6 +78,10 @@ import (
 					if api != null {
 						RestApiId: "!Ref \(api.name)"
 					}
+				}
+
+				for layerName, layer in f.layers {
+					"\(layerName)": layer.#manifest
 				}
 			}
 			if api != null {
