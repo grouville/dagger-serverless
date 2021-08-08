@@ -10,7 +10,7 @@ You will need the **dagger binary** to deploy the application.
 
 > [Install dagger](https://docs.dagger.io/1001/install/)
 
-> :bulb: You should also check basic tutorial about [dagger](https://docs.dagger.io/) and [cue](https://cuetorials.com/) before start.
+> :bulb: You should also check basic tutorials about [dagger](https://docs.dagger.io/) and [cue](https://cuetorials.com/) prior start.
 
 ## Setup
 
@@ -241,8 +241,8 @@ code.deployment.codeUri                          "s3://hello-app-example-bucket/
 
 ## Step 3 - Declaration
 
-Now that your code is upload, we will need to define our lambda function thanks to `serverless.#Function`. It has two
-goal :
+Now that your code is uploaded, we will need to define our lambda function thanks to `serverless.#Function`. It has two
+goals :
 
 - specify the function option, environment...
 - add events to trigger that function.

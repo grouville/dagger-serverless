@@ -1,17 +1,17 @@
 # Dagger serverless package
 
-A [dagger](https://dagger.io/) package to deploy serverless applications with ease.
+A [dagger](https://dagger.io/) package aiming to help you deploy serverless applications with ease.
 
 ## :closed_book: Description
 
-This package is a superset of [AWS SAM](https://docs.aws.amazon.com/serverless-application-model/latest/developerguide/what-is-sam.html), which allows you to build and deploy your Lambda function(s). <br>
-But that is not all; you can also configure [events](https://docs.aws.amazon.com/serverless-application-model/latest/developerguide/sam-property-function-eventsource.html) or [Gateway](https://docs.aws.amazon.com/serverless-application-model/latest/developerguide/sam-resource-api.html) and even extend the actual package to match with your needs.
+This package is a superset of [AWS SAM](https://docs.aws.amazon.com/serverless-application-model/latest/developerguide/what-is-sam.html), which allows you to build and deploy Lambda function(s). <br>
+Furthermore, you can also configure [events](https://docs.aws.amazon.com/serverless-application-model/latest/developerguide/sam-property-function-eventsource.html) or [Gateway](https://docs.aws.amazon.com/serverless-application-model/latest/developerguide/sam-resource-api.html) and even extend the actual package to match your needs.
 
 The aim is to integrate the lambda deployment to your current [dagger](https://dagger.io/) pipeline. This way, you can __build__, __configure__ and __deploy__ with a single [dagger environment](https://docs.dagger.io/1004/dev-first-env/).
 
 ## :hammer_and_pick: Installation 
 
-You must download the [release](https://github.com/grouville/kickMySAM/releases) zip `dagger-serverless.zip` that contains everything needed to do serverless with dagger.<br>
+You must download the [released](https://github.com/grouville/kickMySAM/releases) zip `dagger-serverless.zip` that contains everything needed to deploy serverless with dagger.<br>
 It's a [cue package](https://cuelang.org/docs/concepts/packages/) with the following architecture :
 
 ```bash
@@ -90,7 +90,7 @@ You can discover examples in the [examples folders](./examples), or you can foll
 
 ## :handshake: Contributing
 
-If you got particular needs, don't hesitate to write an [issue](https://github.com/grouville/kickMySAM/issues) or create a [pull request]((https://github.com/grouville/kickMySAM/pulls)) on our repository! :rocket:
+If you have a specific need, don't hesitate to write an [issue](https://github.com/grouville/kickMySAM/issues) or create a [pull request]((https://github.com/grouville/kickMySAM/pulls)) on our repository! :rocket:
 
 See the workflow below to contribute.
 
