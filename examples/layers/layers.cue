@@ -1,9 +1,9 @@
 package example
 
 import (
-	"alpha.dagger.io/dagger"
-	"alpha.dagger.io/dagger"
 	"alpha.dagger.io/aws"
+	"alpha.dagger.io/dagger"
+	"alpha.dagger.io/dagger"
 
 	"github.com/kick-my-sam/serverless"
 	"github.com/kick-my-sam/serverless/events"
