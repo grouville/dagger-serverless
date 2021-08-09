@@ -14,13 +14,13 @@ You will need the **dagger binary** to deploy the application.
 
 ## Setup
 
-> :bulb: If you encounter any issues during the setup, please contact us on [dagger discord](https://discord.gg/ufnyBtc8uY) or [write an issue](https://github.com/grouville/kickMySAM/issues).
+> :bulb: If you encounter any issues during the setup, please contact us on [dagger discord](https://discord.gg/ufnyBtc8uY) or [write an issue](https://github.com/grouville/dagger-serverless/issues).
 
 
-**0.1** - Clone  [dagger serverless repository](https://github.com/grouville/kickMySAM)
+**0.1** - Clone  [dagger serverless repository](https://github.com/grouville/dagger-serverless)
 
 ```bash
-git clone git@github.com:grouville/kickMySAM.git
+git clone git@github.com:grouville/dagger-serverless.git
 ```
 
 **0.2** - Go the `tutorial` folder
@@ -47,7 +47,7 @@ README.md
 
 **0.4** - Add dagger serverless package
 
-Download the latest [release](https://github.com/grouville/kickMySAM/releases) zip `dagger-serverless.zip` and follow
+Download the latest [release](https://github.com/grouville/dagger-serverless/releases) zip `dagger-serverless.zip` and follow
 the following script :
 
 ```bash
@@ -175,7 +175,7 @@ import (
     "alpha.dagger.io/go"     // Go package
     "alpha.dagger.io/aws"    // AWS package
 
-    "github.com/dagger-serverless/serverless" // Our serverless package
+    "github.com/daggerserverless/serverless" // Our serverless package
 )
 
 // Source code folder or repository
@@ -265,8 +265,8 @@ import (
     "alpha.dagger.io/go"     // Go package
     "alpha.dagger.io/aws"    // AWS package
 
-    "github.com/dagger-serverless/serverless"        // Our serverless package
-    "github.com/dagger-serverless/serverless/events" // Serverless events package
+    "github.com/daggerserverless/serverless"        // Our serverless package
+    "github.com/daggerserverless/serverless/events" // Serverless events package
 )
 
 // Source code folder or repository
@@ -328,8 +328,8 @@ import (
     "alpha.dagger.io/go"     // Go package
     "alpha.dagger.io/aws"    // AWS package
 
-    "github.com/dagger-serverless/serverless"        // Our serverless package
-    "github.com/dagger-serverless/serverless/events" // Serverless events package
+    "github.com/daggerserverless/serverless"        // Our serverless package
+    "github.com/daggerserverless/serverless/events" // Serverless events package
 )
 
 // Source code folder or repository

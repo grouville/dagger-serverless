@@ -4,9 +4,9 @@ import (
 	"alpha.dagger.io/aws"
 	"alpha.dagger.io/dagger"
 
-	"github.com/dagger-serverless/aws/secretmanager"
-	"github.com/dagger-serverless/serverless"
-	"github.com/dagger-serverless/serverless/events"
+	"github.com/daggerserverless/aws/secretmanager"
+	"github.com/daggerserverless/serverless"
+	"github.com/daggerserverless/serverless/events"
 )
 
 TestConfig: aws.#Config & {
