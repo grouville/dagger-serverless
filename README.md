@@ -80,12 +80,22 @@ You can discover examples in the [examples folders](./examples), or you can foll
 | [API](https://docs.aws.amazon.com/serverless-application-model/latest/developerguide/sam-property-function-api.html)  | Http endpoint |  
 | [SQS](https://docs.aws.amazon.com/serverless-application-model/latest/developerguide/sam-property-function-sqs.html)  | Simple queue  |  
 
+### Secrets management
+
+The `serverless` package has [aws secret](./cue.mod/usr/github.com/kick-my-sam/aws/secretmanager) integration.
+
+> :bulb: [Examples](./examples/secret)
+
+### Layers
+
+To simplify the management of your lambdas' dependencies, it's now possible to use [layers](./cue.mod/usr/github.com/kick-my-sam/serverless/layers.cue).
+
+> :bulb: [Examples](./examples/layers)
+
 ### Upcoming
 
-- Secrets management
 - Custom domain integration for API
 - Others [events](https://docs.aws.amazon.com/serverless-application-model/latest/developerguide/sam-property-function-eventsource.html)
-- Layers
 - ALB integration
 
 ## :handshake: Contributing
