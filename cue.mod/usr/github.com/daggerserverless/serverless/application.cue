@@ -10,10 +10,16 @@ import (
 	"github.com/daggerserverless/serverless/events"
 )
 
+// Global configuration
 #Global: {
+	// Function global timeout
 	timeout: dagger.#Input & {*null | number & >0}
 
+	// Cors configuration
 	cors: *null | #Cors
+
+	// Custom domain configuration
+	domain: *null | #Domain
 
 	#manifest: {
 		// Global dagger tags
@@ -34,6 +40,10 @@ import (
 					Cors: cors.#manifest
 				}
 			}
+		}
+
+		if domain != null {
+			Api: Domain: domain.#manifest
 		}
 	}
 }
