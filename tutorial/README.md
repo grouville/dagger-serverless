@@ -175,7 +175,7 @@ import (
     "alpha.dagger.io/go"     // Go package
     "alpha.dagger.io/aws"    // AWS package
 
-    "github.com/kick-my-sam/serverless" // Our serverless package
+    "github.com/dagger-serverless/serverless" // Our serverless package
 )
 
 // Source code folder or repository
@@ -265,8 +265,8 @@ import (
     "alpha.dagger.io/go"     // Go package
     "alpha.dagger.io/aws"    // AWS package
 
-    "github.com/kick-my-sam/serverless"        // Our serverless package
-    "github.com/kick-my-sam/serverless/events" // Serverless events package
+    "github.com/dagger-serverless/serverless"        // Our serverless package
+    "github.com/dagger-serverless/serverless/events" // Serverless events package
 )
 
 // Source code folder or repository
@@ -328,8 +328,8 @@ import (
     "alpha.dagger.io/go"     // Go package
     "alpha.dagger.io/aws"    // AWS package
 
-    "github.com/kick-my-sam/serverless"        // Our serverless package
-    "github.com/kick-my-sam/serverless/events" // Serverless events package
+    "github.com/dagger-serverless/serverless"        // Our serverless package
+    "github.com/dagger-serverless/serverless/events" // Serverless events package
 )
 
 // Source code folder or repository

@@ -2,7 +2,7 @@ package example
 
 import (
 	"alpha.dagger.io/aws"
-	"github.com/kick-my-sam/serverless"
+	"github.com/dagger-serverless/serverless"
 )
 
 TestConfig: aws.#Config & {

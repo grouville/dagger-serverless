@@ -5,8 +5,8 @@ import (
 	"alpha.dagger.io/dagger"
 	"alpha.dagger.io/aws"
 
-	"github.com/kick-my-sam/serverless"
-	"github.com/kick-my-sam/serverless/events"
+	"github.com/dagger-serverless/serverless"
+	"github.com/dagger-serverless/serverless/events"
 )
 
 TestConfig: aws.#Config & {
