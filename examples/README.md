@@ -39,7 +39,7 @@ Upload a lambda binary to `s3 Bucket` and `ECR`.
 
 Create function manifest from code and events.
 
-**Goal**
+**Goals**
 
 - Discover events
 - Create multiple functions with multiple events
@@ -59,7 +59,7 @@ Create and deploy secrets to [aws secret manager](https://aws.amazon.com/secrets
 
 ### [InlineSecret](./inline-secret)
 
-Directly code your lambda in your `cue` file thanks `inlineCode` field. It's the best way to fastly deploy your lambda.
+Directly code your lambda in your `cue` file thanks to `inlineCode` field. It's the best way to fastly deploy your lambda.
 
 **Goal** Write inlined lambda
 
@@ -69,17 +69,17 @@ Use layers with your lambda to manage dependencies and optimize your deployment.
 
 > :bulb: You'll need to tip `npm i` in [dependencies](./layers/dependencies) folder before running `dagger up`.
 
-**Goal**
+**Goals**
 
 - Deploy layers
 - Link layers to lambdas
-- Deploy simple application
+- Deploy a simple application
 
 ### [Application](./application)
 
 Deploy a basic serverless application with multiple lambdas triggered by API events.
 
-**Goal**
+**Goals**
 
 - Understand `serverless.#Application` primary usage
 - Deploy multiple functions

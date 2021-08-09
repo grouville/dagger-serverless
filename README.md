@@ -38,7 +38,7 @@ Every `dagger` project has two main directories to work :
 │   ├── usr                   # Your cue package (used to store community package)
 ```
 
-Now tip the following command to use our `serverless` package :
+Type the following commands to use our `serverless` package :
 
 ```bash
 # Go to usr directory
