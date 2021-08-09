@@ -4,7 +4,7 @@ on:
   workflow_dispatch:
     inputs:
       name:
-        description: Release name (tags will suffix it)
+        description: Release name (tags will prefix it)
         required: true
       tags:
         description: Version Tags
