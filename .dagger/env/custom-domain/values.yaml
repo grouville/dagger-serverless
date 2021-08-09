@@ -1,0 +1,23 @@
+plan:
+    package: ./examples/custom-domain
+name: custom-domain
+sops:
+    kms: []
+    gcp_kms: []
+    azure_kv: []
+    hc_vault: []
+    age:
+        - recipient: age1gxwmtwahzwdmrskhf90ppwlnze30lgpm056kuesrxzeuyclrwvpsupwtpk
+          enc: |
+            -----BEGIN AGE ENCRYPTED FILE-----
+            YWdlLWVuY3J5cHRpb24ub3JnL3YxCi0+IFgyNTUxOSAyVHB6TEJFQmxRTFNVVGRQ
+            UTNiMkkreXFuUXk2QU1ORkNqd0xCTXFZZ2tzCnRoQmU0UTlrSTJGS0l0ckZ4VUpv
+            dXV1VzFWbEQ0Y0haNXhORkdkU0FkbkUKLS0tIENmTUFTTjNCNEJ6NVNuK0d2dGtZ
+            U1BmK0xUQ2tmbE5uQkRKT2NrVmdxUmMKYtVO/CfBYt4AWId0FLnDf5bJRmf2+sLx
+            NLGS0Rd3F7sHuZMK3YOMGOXLRJGvCbe2biJJY663jqmuiQ9QxwY63A==
+            -----END AGE ENCRYPTED FILE-----
+    lastmodified: "2021-08-09T19:21:04Z"
+    mac: ENC[AES256_GCM,data:3e+E+YWR4QXGAo3eaxW+xJ1CDNgKTcQVy8gmCLwGZM/4pU9w4O0LoG0t2qFTggXTac++H1e1xg4BCtSEYcgFlqzGH7BwlM3tG4m5xhZ70i81SO6Dkr26BYfiPg/2e5A0xyJxsvzuhH9TyN0YTwIBFs5vJu0XQuPIOKIfEwaFOJQ=,iv:E/fp13FB3DvL1a+nlNB3fph/Mps71GrLwNv4xUdqI4o=,tag:eQp7nvFUAeiEb7wBD7W3WA==,type:str]
+    pgp: []
+    encrypted_suffix: secret
+    version: 3.7.1
