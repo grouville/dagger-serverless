@@ -3,8 +3,8 @@ package serverless
 import (
 	"alpha.dagger.io/dagger"
 
-	"github.com/kick-my-sam/serverless/events"
 	"github.com/kick-my-sam/aws/secretmanager"
+	"github.com/kick-my-sam/serverless/events"
 )
 
 // Event list
