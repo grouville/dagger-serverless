@@ -3,8 +3,8 @@ package sam
 
 import (
 	"alpha.dagger.io/aws"
-	"alpha.dagger.io/aws/cloudformation"
 	"alpha.dagger.io/dagger"
+	"github.com/daggerserverless/aws/cloudformation"
 )
 
 // Sam template deployment

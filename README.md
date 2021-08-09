@@ -11,13 +11,13 @@ The aim is to integrate the lambda deployment to your current [dagger](https://d
 
 ## :hammer_and_pick: Installation 
 
-You must download the [released](https://github.com/grouville/kickMySAM/releases) zip `dagger-serverless.zip` that contains everything needed to deploy serverless with dagger.<br>
+You must download the [released](https://github.com/grouville/dagger-serverless/releases) zip `dagger-serverless.zip` that contains everything needed to deploy serverless with dagger.<br>
 It's a [cue package](https://cuelang.org/docs/concepts/packages/) with the following architecture :
 
 ```bash
 .
 └── github.com
-    └── kick-my-sam             # Our cue packages
+    └── daggerserverless             # Our cue packages
         ├── aws
         │   ├── sam             # AWS SAM package
         │   └── secretmanager   # AWS secret managers package
@@ -57,7 +57,7 @@ rm dagger-serverless.zip
 tree
 .
 └── github.com
-    └── kick-my-sam
+    └── daggerserverless
     ...
 
 8 directories, 12 files
@@ -82,13 +82,13 @@ You can discover examples in the [examples folders](./examples), or you can foll
 
 ### Secrets management
 
-The `serverless` package has [aws secret](./cue.mod/usr/github.com/dagger-serverless/aws/secretmanager) integration.
+The `serverless` package has [aws secret](./cue.mod/usr/github.com/daggerserverless/aws/secretmanager) integration.
 
 > :bulb: [Examples](./examples/secret)
 
 ### Layers
 
-To simplify the management of your lambdas' dependencies, it's now possible to use [layers](./cue.mod/usr/github.com/dagger-serverless/serverless/layers.cue).
+To simplify the management of your lambdas' dependencies, it's now possible to use [layers](./cue.mod/usr/github.com/daggerserverless/serverless/layers.cue).
 
 > :bulb: [Examples](./examples/layers)
 
@@ -100,19 +100,19 @@ To simplify the management of your lambdas' dependencies, it's now possible to u
 
 ## :handshake: Contributing
 
-If you have a specific need, don't hesitate to write an [issue](https://github.com/grouville/kickMySAM/issues) or create a [pull request]((https://github.com/grouville/kickMySAM/pulls)) on our repository! :rocket:
+If you have a specific need, don't hesitate to write an [issue](https://github.com/grouville/dagger-serverless/issues) or create a [pull request]((https://github.com/grouville/dagger-serverless/pulls)) on our repository! :rocket:
 
 See the workflow below to contribute.
 
 ### Workflow
 
-- [Fork the repository](https://github.com/grouville/kickMySAM/fork)
-- Clone this repository : `git clone git@github.com:grouville/kickMySAM.git`
-- Add your **fork** to the remote : `git remote add <fork name> git@github.com:<your github name>/kickMySAM.git`
+- [Fork the repository](https://github.com/grouville/dagger-serverless/fork)
+- Clone this repository : `git clone git@github.com:grouville/dagger-serverless.git`
+- Add your **fork** to the remote : `git remote add <fork name> git@github.com:<your github name>/dagger-serverless.git`
 - Create a branch : `git checkout -b <my cool branch name>`
 - Commit your change `git commit -S -m "Add a new cool feature..."`
 - Push your work `git push <fork name> <my cool branch name>`
-- Open a [Pull Request](https://github.com/grouville/kickMySAM/pulls)
+- Open a [Pull Request](https://github.com/grouville/dagger-serverless/pulls)
 
 > :bulb: Check that [post](https://chris.beams.io/posts/git-commit/) to learn how write good commit message
 

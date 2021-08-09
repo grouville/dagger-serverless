@@ -6,8 +6,8 @@ import (
 	"alpha.dagger.io/dagger"
 	"alpha.dagger.io/aws"
 
-	"github.com/dagger-serverless/aws/sam"
-	"github.com/dagger-serverless/serverless/events"
+	"github.com/daggerserverless/aws/sam"
+	"github.com/daggerserverless/serverless/events"
 )
 
 #Global: {

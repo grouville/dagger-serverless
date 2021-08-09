@@ -5,7 +5,7 @@ import (
 
 	"alpha.dagger.io/dagger"
 
-	"github.com/dagger-serverless/serverless"
+	"github.com/daggerserverless/serverless"
 )
 
 TestCors: serverless.#Cors & {
