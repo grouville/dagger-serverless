@@ -82,13 +82,13 @@ You can discover examples in the [examples folders](./examples), or you can foll
 
 ### Secrets management
 
-The `serverless` package has [aws secret](./cue.mod/usr/github.com/kick-my-sam/aws/secretmanager) integration.
+The `serverless` package has [aws secret](./cue.mod/usr/github.com/dagger-serverless/aws/secretmanager) integration.
 
 > :bulb: [Examples](./examples/secret)
 
 ### Layers
 
-To simplify the management of your lambdas' dependencies, it's now possible to use [layers](./cue.mod/usr/github.com/kick-my-sam/serverless/layers.cue).
+To simplify the management of your lambdas' dependencies, it's now possible to use [layers](./cue.mod/usr/github.com/dagger-serverless/serverless/layers.cue).
 
 > :bulb: [Examples](./examples/layers)
 
