@@ -16,12 +16,6 @@ import (
 	// Stack name
 	name: dagger.#Input & {=~"^[a-zA-Z-]+$"}
 
-	// S3 bucket name
-	bucketName: *"\(name)-bucket" | =~"^[a-zA-Z-]+$"
-
-	// ECR repository name
-	registryName: *"\(name)-registry" | =~"^[a-zA-Z-]+$"
-
 	#template: json.Marshal({
 		AWSTemplateFormatVersion: "2010-09-09"
 		Description: """
@@ -33,7 +27,7 @@ import (
 			Bucket: {
 				Type: "AWS::S3::Bucket"
 				Properties: {
-					BucketName: bucketName
+					BucketName: "\(name)-bucket"
 					Tags: [{
 						Key:   "dagger"
 						Value: "serverless"
@@ -43,7 +37,7 @@ import (
 			Registry: {
 				Type: "AWS::ECR::Repository"
 				Properties: {
-					RepositoryName: registryName
+					RepositoryName: "\(name)-registry"
 					Tags: [{
 						Key:   "dagger"
 						Value: "serverless"
@@ -63,6 +57,8 @@ import (
 			BucketURI: {
 				Value: {"Ref": "Bucket"}
 			}
+			BucketName: Value:     "\(name)-bucket"
+			RepositoryName: Value: "\(name)-registry"
 		}
 	})
 
@@ -79,4 +75,12 @@ import (
 	// S3 bucket URI
 	bucketUri: dagger.#Output & {string}
 	bucketUri: "s3://\(cfn.outputs.BucketURI)"
+
+	// S3 bucket name
+	bucketName: dagger.#Output & {string}
+	bucketName: cfn.outputs.BucketName
+
+	// ECR repository name
+	registryName: dagger.#Output & {string}
+	registryName: cfn.outputs.RepositoryName
 }
