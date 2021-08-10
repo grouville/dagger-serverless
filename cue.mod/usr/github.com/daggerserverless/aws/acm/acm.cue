@@ -12,7 +12,7 @@ import (
 	config: aws.#Config
 
 	// Domain name
-	domain: dagger.#Input & {string}
+	domain: dagger.#Input & {=~"^[^A-Z]+$"}
 
 	// Certificate ARN
 	arn: dagger.#Output & {

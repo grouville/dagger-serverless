@@ -14,7 +14,7 @@ import (
 
 	// The custom domain name for your API Gateway API
 	// Uppercase are not supported
-	domain: dagger.#Input & {string}
+	domain: dagger.#Input & {=~"^[^A-Z]+$"}
 
 	// A list of the basepaths to configure with the Amazon API Gateway domain name.
 	// basePath: *["/"] | [string, ...string] -> performance issue
