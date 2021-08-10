@@ -4,8 +4,8 @@ import (
 	"alpha.dagger.io/aws"
 	"alpha.dagger.io/dagger"
 
-	"github.com/dagger-serverless/serverless"
-	"github.com/dagger-serverless/serverless/events"
+	"github.com/daggerserverless/serverless"
+	"github.com/daggerserverless/serverless/events"
 )
 
 // AWS Configuration
@@ -28,8 +28,11 @@ TestInlineLambdaCode: #"""
 // Stack name
 TestStackName: dagger.#Input & {*"dagger-test-custom-domain" | string}
 
-// Custom domain to use 
-TestDNS: dagger.#Input & {*"dagger-lambda-example.fr" | string}
+// Custom domain to use
+TestDNS: dagger.#Input & {*"test.dagger-lambda-example.fr" | string}
+
+// Zone ID
+TestZoneId: dagger.#Input & {*"Z01275203OFYU3NA8A9I1" | string}
 
 // Deploy code
 TestCode: serverless.#Code & {
@@ -42,7 +45,7 @@ TestCode: serverless.#Code & {
 
 TestFunction: serverless.#Function & {
 	code:    TestCode
-	runTime: "nodejs12.x"
+	runtime: "nodejs12.x"
 	"events": {
 		api: events.#Api & {
 			path: "/hello"
@@ -51,11 +54,19 @@ TestFunction: serverless.#Function & {
 }
 
 TestApplication: serverless.#Application & {
-	name:        TestStackName
+	name:        "\(TestStackName)-deployment"
 	config:      TestConfig
 	bucket:      TestCode.infra.bucketName
 	description: "A inlined function with custom domain name"
-	function: {
+	functions: {
 		InlineFunction: TestFunction
+	}
+	global: serverless.#Global & {
+		"domain": serverless.#Domain & {
+			"domain":            TestDNS
+			"domainCertificate": "*.dagger-lambda-example.fr"
+			"config":            TestConfig
+			"hostedZoneId":      TestZoneId
+		}
 	}
 }
