@@ -4,8 +4,8 @@ import (
 	"alpha.dagger.io/aws"
 	"alpha.dagger.io/dagger"
 
-	"github.com/daggerserverless/serverless"
-	"github.com/daggerserverless/serverless/events"
+	"github.com/grouville/dagger-serverless/serverless"
+	"github.com/grouville/dagger-serverless/serverless/events"
 )
 
 // AWS Configuration

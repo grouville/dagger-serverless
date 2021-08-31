@@ -7,7 +7,7 @@ import (
 	"alpha.dagger.io/aws/s3"
 	"alpha.dagger.io/aws/ecr"
 
-	"github.com/daggerserverless/zip"
+	"github.com/grouville/dagger-serverless/serverless/zip"
 )
 
 // Upload code to s3 or ECR

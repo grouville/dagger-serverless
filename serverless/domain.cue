@@ -4,7 +4,7 @@ import (
 	"alpha.dagger.io/aws"
 	"alpha.dagger.io/dagger"
 
-	"github.com/daggerserverless/aws/acm"
+	"github.com/grouville/dagger-serverless/serverless/aws/acm"
 )
 
 // Configure custom domain for labmda http endpoint
