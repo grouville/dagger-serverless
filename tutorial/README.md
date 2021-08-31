@@ -47,29 +47,8 @@ README.md
 
 **0.4** - Add dagger serverless package
 
-Download the latest [release](https://github.com/grouville/dagger-serverless/releases) zip `dagger-serverless.zip` and follow
-the following script :
-
 ```bash
-# Go to usr directory
-cd cue.mod/usr
-
-# Move zip into the directory
-mv -t . /my/path/dagger-serverless.zip
-
-# Unzip archive
-unzip dagger-serverless.zip
-
-# Clear archive
-rm dagger-serverless.zip
-```
-
-**0.5** - Create environment
-
-Create a dagger environment to deploy `hello-app`.
-
-```bash
-dagger new hello-app -p hello-app
+dagger mod get github.com/grouville/dagger-serverless/serverless
 ```
 
 > :bulb: `-p` option target the directory which will contains cue files.
