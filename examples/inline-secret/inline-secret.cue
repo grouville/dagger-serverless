@@ -4,9 +4,9 @@ import (
 	"alpha.dagger.io/aws"
 	"alpha.dagger.io/dagger"
 
-	"github.com/daggerserverless/aws/secretmanager"
-	"github.com/daggerserverless/serverless"
-	"github.com/daggerserverless/serverless/events"
+	"github.com/grouville/dagger-serverless/serverless/aws/secretmanager"
+	"github.com/grouville/dagger-serverless/serverless"
+	"github.com/grouville/dagger-serverless/serverless/events"
 )
 
 TestConfig: aws.#Config & {
@@ -61,7 +61,7 @@ TestFunctionInline: serverless.#Function & {
 
 // Application deploys one or more functions
 TestApplication: serverless.#Application & {
-	name:        TestName
+	name:        "\(TestName)-deployment"
 	config:      TestConfig
 	bucket:      TestCode.infra.bucketName
 	description: "Test secret env var reference use"

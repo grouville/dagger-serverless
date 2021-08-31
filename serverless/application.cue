@@ -6,8 +6,8 @@ import (
 	"alpha.dagger.io/dagger"
 	"alpha.dagger.io/aws"
 
-	"github.com/daggerserverless/aws/sam"
-	"github.com/daggerserverless/serverless/events"
+	"github.com/grouville/dagger-serverless/serverless/aws/sam"
+	"github.com/grouville/dagger-serverless/serverless/events"
 )
 
 // Global configuration
