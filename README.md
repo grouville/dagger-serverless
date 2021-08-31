@@ -11,56 +11,10 @@ The aim is to integrate the lambda deployment to your current [dagger](https://d
 
 ## :hammer_and_pick: Installation 
 
-You must download the [released](https://github.com/grouville/dagger-serverless/releases) zip `dagger-serverless.zip` that contains everything needed to deploy serverless with dagger.<br>
-It's a [cue package](https://cuelang.org/docs/concepts/packages/) with the following architecture :
+You can install the latest release with
 
 ```bash
-.
-└── github.com
-    └── daggerserverless             # Our cue packages
-        ├── aws
-        │   ├── sam             # AWS SAM package
-        │   └── secretmanager   # AWS secret managers package
-        ├── serverless          # Serverless package
-        └── zip                 # Zip package
-```
-
-Now, go to your favorite `dagger` project.
-
-Every `dagger` project has two main directories to work :
-```bash
-├── .dagger                   # Dagger directory to store environment
-│   ├── env
-├── cue.mod                   # Cue module to store cue package
-│   ├── module.cue            # Module configuration
-│   ├── pkg                   # Official package (contains dagger package)
-│   │   └── alpha.dagger.io
-│   ├── usr                   # Your cue package (used to store community package)
-```
-
-Type the following commands to use our `serverless` package :
-
-```bash
-# Go to usr directory
-cd cue.mod/usr
-
-# Move zip into the directory
-mv -t . /my/path/dagger-serverless.zip
-
-# Unzip archive
-unzip dagger-serverless.zip
-
-# Clear archive
-rm dagger-serverless.zip
-
-# List current directory content
-tree
-.
-└── github.com
-    └── daggerserverless
-    ...
-
-8 directories, 12 files
+dagger mod get github.com/grouville/dagger-serverless/serverless
 ```
 
 ## :beginner: Quickstart
@@ -82,13 +36,13 @@ You can discover examples in the [examples folders](./examples), or you can foll
 
 ### Secrets management
 
-The `serverless` package has [aws secret](./cue.mod/usr/github.com/daggerserverless/aws/secretmanager) integration.
+The `serverless` package has [aws secret](./serverless/aws/secretmanager) integration.
 
 > :bulb: [Examples](./examples/secret)
 
 ### Layers
 
-To simplify the management of your lambdas' dependencies, it's now possible to use [layers](./cue.mod/usr/github.com/daggerserverless/serverless/layers.cue).
+To simplify the management of your lambdas' dependencies, it's now possible to use [layers](./serverless/layers.cue).
 
 > :bulb: [Examples](./examples/layers)
 
