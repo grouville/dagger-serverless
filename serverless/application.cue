@@ -125,9 +125,11 @@ import (
 					"Description": "\(name) Function ARN"
 					"Value": "Fn::GetAtt": ["\(name)", "Arn"]
 				}
-				"\(name)IamRole": {
-					"Description": "Implicit IAM Role created for \(name) function"
-					"Value": "Fn::GetAtt": ["\(name)Role", "Arn"]
+				if f.role == null {
+					"\(name)IamRole": {
+						"Description": "Implicit IAM Role created for \(name) function"
+						"Value": "Fn::GetAtt": ["\(name)Role", "Arn"]
+					}
 				}
 			}
 		}
