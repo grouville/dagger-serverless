@@ -52,6 +52,9 @@ import (
 	// Policies
 	policies: dagger.#Input & {*"AWSLambdaBasicExecutionRole" | =~"^[\\S]+$"}
 
+	// Role ARN
+	role: dagger.#Input & {*null | string}
+
 	// Environement
 	environments: [string]: =~"^[\\S]+$"
 
@@ -86,9 +89,14 @@ import (
 			}
 
 			// Configuration
-			Runtime:     runtime
-			MemorySize:  memorySize
-			Policies:    policies
+			Runtime:    runtime
+			MemorySize: memorySize
+			Policies:   policies
+
+			if role != null {
+				Role: role
+			}
+
 			Timeout:     timeout
 			PackageType: code.type
 			if description != null {
